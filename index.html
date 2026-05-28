@@ -67,10 +67,10 @@
         <div>
           <div class="hero-card">
             <div class="hero-avatar-placeholder">
-              <!-- Replace with: <img src="assets/images/picture.jpg" alt="Roy Juntilla" class="hero-avatar"> -->
+              <!-- Replace with: <img src="assets/images/picture.jpg" alt="Roy POgi" class="hero-avatar"> -->
               <i class="fas fa-user"></i>
             </div>
-            <div class="card-name">Roy Juntilla</div>
+            <div class="card-name">Roy Jhun Padecio</div>
             <div class="card-role font-mono">IT Technician · Network Specialist</div>
             <div class="card-meta">
               <div class="meta-row"><i class="fas fa-map-marker-alt"></i><div>Philippines &nbsp;<span>🇵🇭</span></div></div>
@@ -107,10 +107,10 @@
         <!-- Left: Profile card -->
         <div>
           <div class="about-card fade-up">
-            <img src="assets/images/picture.jpg" alt="Roy Juntilla" class="about-img"
+            <img src="assets/images/picture.jpg" alt="Roy pogi" class="about-img"
                  onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
             <div style="display:none;width:140px;height:140px;border-radius:50%;background:var(--navy-4);border:3px solid var(--blue);box-shadow:0 0 30px var(--blue-glow);margin:0 auto 20px;align-items:center;justify-content:center;font-size:2.5rem;color:var(--blue);"><i class="fas fa-user"></i></div>
-            <div class="about-name">Roy Juntilla</div>
+            <div class="about-name">Roy Jhun Padecio</div>
             <div class="about-role font-mono">IT Technician &amp; Network Specialist</div>
             <div class="about-tags">
               <span class="tag">Networking</span>
@@ -546,19 +546,23 @@
              e.g. https://www.youtube.com/watch?v=ABC123  →  data-src="ABC123"
              The thumbnail auto-loads from YouTube.
         ── -->
-        <div class="video-card fade-up" data-type="local">
+       <a href="https://vimeo.com/reviews/ffa2f196-2511-4c82-b1f6-c9dc14d7afaa/users/257336197/folders/29388401" 
+   target="_blank" 
+   rel="noopener noreferrer"
+   class="video-card fade-up" 
+   data-type="vimeo"
+   style="display: block; text-decoration: none; color: inherit;">
   <div class="video-thumb">
-    <video controls width="100%" poster="assets/images/thumbnail.jpg">
-      <source src="https://vimeo.com/reviews/ffa2f196-2511-4c82-b1f6-c9dc14d7afaa/users/257336197/folders/29388401" type="video/mp4">
-      Your browser does not support the video tag.
-    </video>
+    <img src="assets/images/thumbnail.jpg" alt="Network Cabling Skills Demo - Cat6 structured cabling and termination">
+    <div class="play-btn"><i class="fab fa-vimeo-v"></i></div>
+    <div class="video-badge video-badge--vimeo"><i class="fab fa-vimeo-v"></i> Vimeo</div>
   </div>
   <div class="video-info">
     <div class="video-cat">Skills Demo</div>
     <div class="video-title">Network Cabling — Skills Demo</div>
     <div class="video-desc">Demonstrating Cat6 structured cabling, termination, and cable management techniques.</div>
   </div>
-</div>
+</a>
 
         <!-- ── FACEBOOK VIDEO CARD ──
              Replace data-src with the FULL Facebook video page URL
@@ -669,48 +673,48 @@
             </div>
           </div>
         </div>
-
-        <div class="contact-form-wrap fade-up">
-          <form action="#" method="POST">
-            <div class="form-row">
-              <div class="form-group">
-                <label for="fname">First Name</label>
-                <input type="text" id="fname" placeholder="John" required>
-              </div>
-              <div class="form-group">
-                <label for="lname">Last Name</label>
-                <input type="text" id="lname" placeholder="Doe" required>
-              </div>
-            </div>
-            <div class="form-group">
-              <label for="email">Email Address</label>
-              <input type="email" id="email" placeholder="john@company.com" required>
-            </div>
-            <div class="form-group">
-              <label for="subject">Subject</label>
-              <select id="subject">
-                <option value="">Select a reason...</option>
-                <option>Job Opportunity</option>
-                <option>Freelance Project</option>
-                <option>Network Infrastructure</option>
-                <option>IT Support &amp; Consulting</option>
-                <option>Collaboration</option>
-                <option>Other</option>
-              </select>
-            </div>
-            <div class="form-group">
-              <label for="message">Message</label>
-              <textarea id="message" placeholder="Tell me about the opportunity or project..." required></textarea>
-            </div>
-            <button type="submit" class="btn btn-primary" style="width:100%;justify-content:center;font-size:0.95rem;">
-              <i class="fas fa-paper-plane"></i> Send Message
-            </button>
-          </form>
-        </div>
+<div class="contact-form-wrap fade-up">
+  <form action="https://formspree.io/f/mqejwoyl" method="POST">
+    
+    <div class="form-row">
+      <div class="form-group">
+        <label for="fname">First Name</label>
+        <input type="text" id="fname" name="first_name" placeholder="John" required>
+      </div>
+      <div class="form-group">
+        <label for="lname">Last Name</label>
+        <input type="text" id="lname" name="last_name" placeholder="Doe" required>
       </div>
     </div>
-  </section>
 
+    <div class="form-group">
+      <label for="email">Email Address</label>
+      <input type="email" id="email" name="email" placeholder="john@company.com" required>
+    </div>
+
+    <div class="form-group">
+      <label for="subject">Subject</label>
+      <select id="subject" name="subject" required>
+        <option value="">Select a reason...</option>
+        <option value="Job Opportunity">Job Opportunity</option>
+        <option value="Freelance Project">Freelance Project</option>
+        <option value="Network Infrastructure">Network Infrastructure</option>
+        <option value="IT Support & Consulting">IT Support &amp; Consulting</option>
+        <option value="Collaboration">Collaboration</option>
+        <option value="Other">Other</option>
+      </select>
+    </div>
+
+    <div class="form-group">
+      <label for="message">Message</label>
+      <textarea id="message" name="message" placeholder="Tell me about the opportunity or project..." required></textarea>
+    </div>
+
+    <button type="submit" class="btn btn-primary" style="width:100%;justify-content:center;font-size:0.95rem;">
+      <i class="fas fa-paper-plane"></i> Send Message
+    </button>
+  </form>
+</div>
   <!-- ===== FOOTER ===== -->
   <footer>
     <div class="container">
