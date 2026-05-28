@@ -1,0 +1,424 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>RJ Space | Gallery — WorldSkills ASEAN 2025</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=IBM+Plex+Mono:wght@400;500;600&family=Plus+Jakarta+Sans:wght@300;400;500;600&display=swap');
+
+    :root {
+      --navy:      #070d1a;
+      --navy-2:    #0d1829;
+      --navy-3:    #111e33;
+      --navy-4:    #162440;
+      --border:    rgba(255,255,255,0.07);
+      --border-md: rgba(255,255,255,0.12);
+      --blue:      #00c2ff;
+      --blue-dim:  rgba(0,194,255,0.1);
+      --blue-glow: rgba(0,194,255,0.25);
+      --green:     #00e5a0;
+      --text:      #e2e8f0;
+      --text-dim:  #8899aa;
+      --text-muted:#4a6075;
+      --white:     #ffffff;
+    }
+
+    *, *::before, *::after { margin:0; padding:0; box-sizing:border-box; }
+    html { scroll-behavior:smooth; }
+    body {
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      background: var(--navy);
+      color: var(--text);
+      min-height: 100vh;
+      overflow-x: hidden;
+    }
+    body::before {
+      content:'';
+      position:fixed; inset:0;
+      background-image:
+        linear-gradient(rgba(0,194,255,0.025) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(0,194,255,0.025) 1px, transparent 1px);
+      background-size:40px 40px;
+      pointer-events:none; z-index:0;
+    }
+
+    /* NAV */
+    nav {
+      position:sticky; top:0; z-index:100;
+      background: rgba(7,13,26,0.9);
+      backdrop-filter: blur(20px);
+      border-bottom: 1px solid var(--border);
+      padding: 0 24px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      height: 64px;
+    }
+    .logo {
+      font-family:'IBM Plex Mono',monospace;
+      font-size:1rem; font-weight:600;
+      color:var(--blue);
+    }
+    .back-btn {
+      display:inline-flex; align-items:center; gap:8px;
+      background:var(--blue-dim);
+      border:1px solid rgba(0,194,255,0.2);
+      color:var(--blue);
+      padding:8px 18px;
+      border-radius:8px;
+      font-size:0.82rem; font-weight:600;
+      cursor:pointer;
+      transition:all 0.25s ease;
+      font-family:'Plus Jakarta Sans',sans-serif;
+    }
+    .back-btn:hover { background:rgba(0,194,255,0.18); transform:translateX(-2px); }
+
+    /* HERO BANNER */
+    .gallery-hero {
+      text-align:center;
+      padding: 72px 24px 56px;
+      position:relative;
+      z-index:1;
+    }
+    .gallery-hero::before {
+      content:'';
+      position:absolute;
+      top:0; left:50%; transform:translateX(-50%);
+      width:600px; height:300px;
+      background: radial-gradient(ellipse, rgba(0,194,255,0.07) 0%, transparent 70%);
+      pointer-events:none;
+    }
+    .gallery-hero .eyebrow {
+      font-family:'IBM Plex Mono',monospace;
+      font-size:0.7rem; font-weight:600;
+      letter-spacing:0.12em; text-transform:uppercase;
+      color:var(--blue); margin-bottom:16px;
+      display:inline-flex; align-items:center; gap:8px;
+    }
+    .gallery-hero h1 {
+      font-family:'Syne',sans-serif;
+      font-size:clamp(2rem,5vw,3rem);
+      font-weight:800; color:var(--white);
+      margin-bottom:12px;
+    }
+    .gallery-hero .sub {
+      color:var(--text-dim); font-size:1rem;
+      max-width:500px; margin:0 auto 28px;
+      line-height:1.7;
+    }
+    .badge {
+      display:inline-flex; align-items:center; gap:6px;
+      padding:5px 14px; border-radius:20px;
+      font-size:0.75rem; font-weight:600;
+      background:rgba(0,229,160,0.1);
+      color:var(--green);
+      border:1px solid rgba(0,229,160,0.25);
+    }
+
+    /* FILTER BAR */
+    .filter-bar {
+      display:flex; justify-content:center;
+      flex-wrap:wrap; gap:10px;
+      padding:0 24px 40px;
+      position:relative; z-index:1;
+    }
+    .filter-btn {
+      background:var(--navy-3);
+      border:1px solid var(--border);
+      color:var(--text-dim);
+      padding:8px 18px;
+      border-radius:8px;
+      font-size:0.82rem; font-weight:500;
+      cursor:pointer;
+      transition:all 0.25s ease;
+      font-family:'Plus Jakarta Sans',sans-serif;
+      display:flex; align-items:center; gap:6px;
+    }
+    .filter-btn:hover { border-color:var(--border-md); color:var(--text); transform:translateY(-1px); }
+    .filter-btn.active {
+      background:var(--blue-dim);
+      border-color:rgba(0,194,255,0.3);
+      color:var(--blue);
+    }
+
+    /* GRID */
+    .gallery-wrap {
+      max-width:1400px;
+      margin:0 auto;
+      padding:0 24px 80px;
+      position:relative; z-index:1;
+    }
+    .gallery-grid {
+      display:grid;
+      grid-template-columns:repeat(auto-fill, minmax(300px, 1fr));
+      gap:20px;
+    }
+
+    /* CARD */
+    .gallery-card {
+      background:var(--navy-2);
+      border:1px solid var(--border);
+      border-radius:16px;
+      overflow:hidden;
+      transition:all 0.3s cubic-bezier(0.4,0,0.2,1);
+      cursor:pointer;
+    }
+    .gallery-card:hover {
+      transform:translateY(-6px);
+      border-color:var(--border-md);
+      box-shadow:0 20px 40px rgba(0,0,0,0.4);
+    }
+    .card-img {
+      aspect-ratio:4/3;
+      overflow:hidden;
+      background:var(--navy-4);
+      display:flex; align-items:center; justify-content:center;
+      color:var(--text-muted);
+      position:relative;
+    }
+    .card-img img {
+      width:100%; height:100%;
+      object-fit:cover;
+      display:block;
+      transition:transform 0.5s ease, filter 0.4s ease;
+    }
+    .gallery-card:hover .card-img img {
+      transform:scale(1.05);
+      filter:brightness(1.05);
+    }
+    .card-overlay {
+      position:absolute; inset:0;
+      background:linear-gradient(0deg, rgba(7,13,26,0.7) 0%, transparent 50%);
+      opacity:0;
+      transition:opacity 0.3s ease;
+      display:flex; align-items:flex-end;
+      padding:16px;
+    }
+    .gallery-card:hover .card-overlay { opacity:1; }
+    .overlay-expand {
+      color:white; font-size:0.78rem; font-weight:600;
+      display:flex; align-items:center; gap:6px;
+      font-family:'IBM Plex Mono',monospace;
+    }
+
+    .card-body { padding:18px 20px; }
+    .card-top {
+      display:flex; justify-content:space-between;
+      align-items:flex-start; gap:8px; margin-bottom:6px;
+    }
+    .card-title {
+      font-family:'Syne',sans-serif;
+      font-size:0.95rem; font-weight:700;
+      color:var(--white); line-height:1.3;
+    }
+    .card-cat {
+      font-family:'IBM Plex Mono',monospace;
+      font-size:0.62rem; font-weight:600;
+      text-transform:uppercase; letter-spacing:0.06em;
+      background:var(--blue-dim);
+      color:var(--blue);
+      border:1px solid rgba(0,194,255,0.15);
+      padding:2px 8px; border-radius:4px;
+      white-space:nowrap; flex-shrink:0;
+    }
+    .card-desc {
+      font-size:0.8rem; color:var(--text-dim);
+      line-height:1.6;
+    }
+
+    /* LIGHTBOX */
+    .lightbox {
+      display:none; position:fixed; inset:0;
+      background:rgba(4,8,16,0.96);
+      backdrop-filter:blur(20px);
+      z-index:1000;
+      justify-content:center; align-items:center;
+    }
+    .lightbox.active { display:flex; animation:fadeIn 0.2s ease; }
+    @keyframes fadeIn { from{opacity:0} to{opacity:1} }
+    .lb-content {
+      max-width:90vw; max-height:90vh;
+      position:relative;
+      border-radius:16px; overflow:hidden;
+      box-shadow:0 40px 60px rgba(0,0,0,0.6);
+    }
+    .lb-content img {
+      display:block; max-width:90vw; max-height:85vh;
+      object-fit:contain; border-radius:16px;
+    }
+    .lb-close {
+      position:absolute; top:14px; right:14px;
+      width:36px; height:36px;
+      background:rgba(0,0,0,0.6); backdrop-filter:blur(4px);
+      border-radius:50%;
+      display:flex; align-items:center; justify-content:center;
+      color:white; font-size:1.2rem;
+      cursor:pointer; transition:all 0.2s; border:none;
+    }
+    .lb-close:hover { background:rgba(0,0,0,0.9); transform:scale(1.05); }
+    .lb-caption {
+      position:absolute; bottom:0; left:0; right:0;
+      background:linear-gradient(0deg, rgba(0,0,0,0.8), transparent);
+      color:white; padding:16px 20px;
+      font-size:0.85rem; text-align:center;
+      font-weight:500;
+    }
+
+    /* EMPTY STATE */
+    .empty-state {
+      grid-column:1/-1;
+      text-align:center;
+      padding:60px 20px;
+      color:var(--text-muted);
+    }
+    .empty-state i { font-size:2.5rem; margin-bottom:12px; display:block; color:var(--navy-4); }
+
+    /* FOOTER */
+    .gallery-footer {
+      text-align:center;
+      padding:24px;
+      border-top:1px solid var(--border);
+      color:var(--text-muted);
+      font-size:0.78rem;
+      font-family:'IBM Plex Mono',monospace;
+    }
+
+    @media(max-width:600px) {
+      .gallery-hero { padding:48px 20px 36px; }
+      .gallery-grid { grid-template-columns:1fr; }
+    }
+  </style>
+</head>
+<body>
+
+  <nav>
+    <span class="logo">&lt;RJ<span style="color:var(--text-muted);">/</span>&gt;</span>
+    <button class="back-btn" id="backBtn"><i class="fas fa-arrow-left"></i> Back to Portfolio</button>
+  </nav>
+
+  <div class="gallery-hero">
+    <div class="eyebrow"><i class="fas fa-images"></i> Visual Archive</div>
+    <h1>Gallery</h1>
+    <p class="sub">
+      A visual record of competitions, projects, and the journey through
+      the IT world — from structured cabling to the WorldSkills ASEAN stage.
+    </p>
+    <span class="badge"><i class="fas fa-trophy"></i> WorldSkills ASEAN 2025 · INC Competitor</span>
+  </div>
+
+  <div class="filter-bar" id="filterBar">
+    <button class="filter-btn active" data-filter="all"><i class="fas fa-th"></i> All</button>
+    <button class="filter-btn" data-filter="competition"><i class="fas fa-trophy"></i> Competition</button>
+    <button class="filter-btn" data-filter="networking"><i class="fas fa-network-wired"></i> Networking</button>
+    <button class="filter-btn" data-filter="projects"><i class="fas fa-code"></i> Projects</button>
+    <button class="filter-btn" data-filter="events"><i class="fas fa-calendar-star"></i> Events</button>
+  </div>
+
+  <div class="gallery-wrap">
+    <div class="gallery-grid" id="galleryGrid"></div>
+  </div>
+
+  <div class="gallery-footer">
+    ✦ click any image to expand · Roy Juntilla — IT Portfolio ✦
+  </div>
+
+  <!-- Lightbox -->
+  <div class="lightbox" id="lightbox">
+    <div class="lb-content">
+      <img id="lbImg" src="" alt="">
+      <button class="lb-close" id="lbClose"><i class="fas fa-times"></i></button>
+      <div class="lb-caption" id="lbCaption"></div>
+    </div>
+  </div>
+
+  <script>
+    // Gallery data — replace imageUrl values with your actual photo paths
+    // e.g. "assets/images/worldskills1.jpg"
+    const gallery = [
+      { id:1, title:"WorldSkills ASEAN 2025 — Competition Day", category:"competition", desc:"Information Network Cabling at the ASEAN regional level.", imageUrl:"https://picsum.photos/id/1/600/450" },
+      { id:2, title:"Structured Cabling Installation", category:"networking", desc:"Terminating and testing Cat6 patch panels in a live environment.", imageUrl:"https://picsum.photos/id/20/600/450" },
+      { id:3, title:"INC Skills Demo — Patch Panel Termination", category:"competition", desc:"Precision wire termination during competition prep.", imageUrl:"https://picsum.photos/id/96/600/450" },
+      { id:4, title:"GitHub Ticket System — Live Demo", category:"projects", desc:"Presenting the responsive IT ticketing system capstone project.", imageUrl:"https://picsum.photos/id/106/600/450" },
+      { id:5, title:"Network Topology Design", category:"networking", desc:"Logical and physical topology mapping for small office setup.", imageUrl:"https://picsum.photos/id/29/600/450" },
+      { id:6, title:"ASEAN Opening Ceremony", category:"events", desc:"WorldSkills ASEAN 2025 opening ceremony — representing the Philippines.", imageUrl:"https://picsum.photos/id/77/600/450" },
+      { id:7, title:"Hardware Servicing Workshop", category:"projects", desc:"Diagnosing and repairing desktop components at the IT lab.", imageUrl:"https://picsum.photos/id/104/600/450" },
+      { id:8, title:"Competition Stage — Ready", category:"competition", desc:"Final preparations before the Information Network Cabling event.", imageUrl:"https://picsum.photos/id/169/600/450" },
+      { id:9, title:"Team Philippines", category:"events", desc:"With fellow Filipino competitors at the ASEAN regional stage.", imageUrl:"https://picsum.photos/id/64/600/450" },
+      { id:10, title:"Cable Management Project", category:"networking", desc:"Clean cable routing and management for a server rack build.", imageUrl:"https://picsum.photos/id/15/600/450" },
+      { id:11, title:"Certification Day", category:"events", desc:"Receiving the TESDA NC II Computer Hardware Servicing certificate.", imageUrl:"https://picsum.photos/id/83/600/450" },
+      { id:12, title:"Snake Game PWA — Build", category:"projects", desc:"Development session for the offline-capable PWA snake game.", imageUrl:"https://picsum.photos/id/26/600/450" },
+    ];
+
+    const grid = document.getElementById('galleryGrid');
+    const lightbox = document.getElementById('lightbox');
+    const lbImg = document.getElementById('lbImg');
+    const lbCaption = document.getElementById('lbCaption');
+    const lbClose = document.getElementById('lbClose');
+
+    function esc(s) { return s.replace(/[&<>]/g, m => ({'&':'&amp;','<':'&lt;','>':'&gt;'}[m]||m)); }
+
+    function render(filter) {
+      const items = filter === 'all' ? gallery : gallery.filter(i => i.category === filter);
+      if (!items.length) {
+        grid.innerHTML = `<div class="empty-state"><i class="fas fa-images"></i>No items in this category yet.</div>`;
+        return;
+      }
+      grid.innerHTML = items.map(item => `
+        <div class="gallery-card" data-img="${item.imageUrl}" data-title="${esc(item.title)}" data-desc="${esc(item.desc)}">
+          <div class="card-img">
+            <img src="${item.imageUrl}" alt="${esc(item.title)}" loading="lazy">
+            <div class="card-overlay">
+              <div class="overlay-expand"><i class="fas fa-expand-alt"></i> View Full</div>
+            </div>
+          </div>
+          <div class="card-body">
+            <div class="card-top">
+              <div class="card-title">${esc(item.title)}</div>
+              <div class="card-cat">${item.category}</div>
+            </div>
+            <div class="card-desc">${esc(item.desc)}</div>
+          </div>
+        </div>
+      `).join('');
+
+      grid.querySelectorAll('.gallery-card').forEach(card => {
+        card.addEventListener('click', () => {
+          lbImg.src = card.dataset.img;
+          lbCaption.textContent = card.dataset.title + (card.dataset.desc ? ' — ' + card.dataset.desc : '');
+          lightbox.classList.add('active');
+          document.body.style.overflow = 'hidden';
+        });
+      });
+    }
+
+    // Filters
+    document.getElementById('filterBar').addEventListener('click', e => {
+      const btn = e.target.closest('.filter-btn');
+      if (!btn) return;
+      document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+      render(btn.dataset.filter);
+    });
+
+    // Lightbox close
+    function closeLb() {
+      lightbox.classList.remove('active');
+      document.body.style.overflow = '';
+      setTimeout(() => { lbImg.src = ''; }, 200);
+    }
+    lbClose.addEventListener('click', closeLb);
+    lightbox.addEventListener('click', e => { if (e.target === lightbox) closeLb(); });
+    document.addEventListener('keydown', e => { if (e.key === 'Escape') closeLb(); });
+
+    // Back button
+    document.getElementById('backBtn').addEventListener('click', () => {
+      if (document.referrer) window.history.back();
+      else window.location.href = 'homepage.html';
+    });
+
+    render('all');
+  </script>
+</body>
+</html>
