@@ -10,10 +10,93 @@
 </head>
 <body>
 
+  <!-- ===== WELCOME GATE POPUP ===== -->
+  <div id="welcomeOverlay" class="wg-overlay" aria-modal="true" role="dialog" aria-label="Welcome">
+    <div class="wg-backdrop"></div>
+    <div class="wg-modal">
+
+      <!-- Ambient glow rings -->
+      <div class="wg-glow"></div>
+      <div class="wg-glow wg-glow--2"></div>
+
+      <!-- Header -->
+      <div class="wg-header">
+        <div class="wg-logo font-mono">&lt;RJ<span>/</span>&gt;</div>
+        <div class="wg-step-track">
+          <span class="wg-step active" data-step="0"></span>
+          <span class="wg-step" data-step="1"></span>
+          <span class="wg-step" data-step="2"></span>
+        </div>
+      </div>
+
+      <!-- ── STEP 0 : Welcome ── -->
+      <div class="wg-panel active" id="wgStep0">
+        <div class="wg-icon-badge"><i class="fas fa-wifi"></i></div>
+        <h2 class="wg-title">Hey there,<br><span>welcome in.</span></h2>
+        <p class="wg-sub font-mono">// establishing connection…</p>
+        <p class="wg-body">Before you dive in, I'd love to know a little about you — takes about 10 seconds.</p>
+        <button class="wg-btn wg-btn--primary" onclick="wgNext()">Let's go <i class="fas fa-arrow-right"></i></button>
+      </div>
+
+      <!-- ── STEP 1 : Why are you here? ── -->
+      <div class="wg-panel" id="wgStep1">
+        <p class="wg-label font-mono">01 / purpose of visit</p>
+        <h2 class="wg-title">What brings you here?</h2>
+        <p class="wg-body">Select the option that best describes you.</p>
+        <div class="wg-choices" id="wgChoices1">
+          <button class="wg-choice" data-value="recruiter" onclick="wgSelect(this,'wgChoices1')">
+            <i class="fas fa-briefcase"></i>
+            <span>I'm a Recruiter / Employer</span>
+          </button>
+          <button class="wg-choice" data-value="client" onclick="wgSelect(this,'wgChoices1')">
+            <i class="fas fa-handshake"></i>
+            <span>Looking to hire for a project</span>
+          </button>
+          <button class="wg-choice" data-value="peer" onclick="wgSelect(this,'wgChoices1')">
+            <i class="fas fa-code"></i>
+            <span>Fellow developer / IT peer</span>
+          </button>
+          <button class="wg-choice" data-value="curious" onclick="wgSelect(this,'wgChoices1')">
+            <i class="fas fa-eye"></i>
+            <span>Just exploring</span>
+          </button>
+        </div>
+        <div class="wg-nav">
+          <button class="wg-btn wg-btn--ghost" onclick="wgBack()"><i class="fas fa-arrow-left"></i> Back</button>
+          <button class="wg-btn wg-btn--primary" id="wgNext1" onclick="wgNext()" disabled>Next <i class="fas fa-arrow-right"></i></button>
+        </div>
+      </div>
+
+      <!-- ── STEP 2 : Music preference ── -->
+      <div class="wg-panel" id="wgStep2">
+        <p class="wg-label font-mono">02 / audio preference</p>
+        <h2 class="wg-title">Background music?</h2>
+        <p class="wg-body">There's ambient music on this site. Want it to autoplay?</p>
+        <div class="wg-choices" id="wgChoices2">
+          <button class="wg-choice" data-value="yes" onclick="wgSelect(this,'wgChoices2')">
+            <i class="fas fa-music"></i>
+            <span>Yes, turn it on</span>
+          </button>
+          <button class="wg-choice" data-value="no" onclick="wgSelect(this,'wgChoices2')">
+            <i class="fas fa-volume-mute"></i>
+            <span>No thanks, I'll be quiet</span>
+          </button>
+        </div>
+        <div class="wg-nav">
+          <button class="wg-btn wg-btn--ghost" onclick="wgBack()"><i class="fas fa-arrow-left"></i> Back</button>
+          <button class="wg-btn wg-btn--primary" id="wgNext2" onclick="wgEnter()" disabled>Enter Site <i class="fas fa-door-open"></i></button>
+        </div>
+      </div>
+
+    </div>
+  </div>
+  <!-- ===== END WELCOME GATE ===== -->
+
   <!-- ===== NAVIGATION ===== -->
   <nav id="navbar">
     <div class="container">
       <a href="#home" class="logo">&lt;RJ<span>/</span>&gt;</a>
+      <button id="themeToggle" title="Toggle day / night mode" aria-label="Toggle theme"><span class="tt-icon">🌙</span><span class="tt-label">Night</span></button>
       <div class="hamburger" id="hamburger"><i class="fas fa-bars"></i></div>
       <ul class="nav-links" id="navLinks">
         <li><a href="#about">About</a></li>
@@ -461,28 +544,6 @@
         </div>
 
         <div class="project-card fade-up">
-          <div class="project-head" style="background:linear-gradient(135deg,#1a0d29,#2b1040);">
-            <i class="fas fa-gamepad" style="color:#a78bfa;"></i>
-          </div>
-          <div class="project-body">
-            <div class="project-tags">
-              <span class="project-tag">JavaScript</span>
-              <span class="project-tag">PWA</span>
-              <span class="project-tag">Service Worker</span>
-            </div>
-            <div class="project-name">Snake Game PWA</div>
-            <p class="project-desc">
-              Classic snake game rebuilt as a Progressive Web App. Works fully offline via
-              Service Worker caching — installable on any device, playable without internet.
-            </p>
-            <div class="project-links">
-              <a href="#"><i class="fas fa-play"></i> Play Demo</a>
-              <a href="#"><i class="fab fa-github"></i> Code</a>
-            </div>
-          </div>
-        </div>
-
-        <div class="project-card fade-up">
           <div class="project-head" style="background:linear-gradient(135deg,#1a1209,#2b1e0f);">
             <i class="fas fa-globe" style="color:var(--orange);"></i>
           </div>
@@ -734,8 +795,267 @@
     </div>
   </footer>
 
+  <!-- ===== MUSIC PLAYER ===== -->
+  <div id="music-player">
+    <!-- Expanded panel -->
+    <div id="music-panel">
+      <div class="mp-header">
+        <span class="mp-label"><i class="fas fa-music"></i> &nbsp;Now Playing</span>
+        <button class="mp-close-btn" id="mpCollapseBtn" title="Minimize"><i class="fas fa-chevron-down"></i></button>
+      </div>
+      <div class="mp-track">
+        <div class="mp-vinyl" id="mpVinylLarge"></div>
+        <div class="mp-info">
+          <div class="mp-title" id="mpTitle">Lofi Study Beats</div>
+          <div class="mp-artist" id="mpArtist">Ambient · Background</div>
+        </div>
+      </div>
+      <div class="mp-progress-wrap">
+        <div class="mp-progress-bar" id="mpProgressBar">
+          <div class="mp-progress-fill" id="mpProgressFill"></div>
+        </div>
+        <div class="mp-times">
+          <span id="mpCurrent">0:00</span>
+          <span id="mpDuration">--:--</span>
+        </div>
+      </div>
+      <div class="mp-controls">
+        <button class="mp-btn" id="mpMuteBtn" title="Mute"><i class="fas fa-volume-up"></i></button>
+        <button class="mp-btn play-pause" id="mpPlayBtn" title="Play / Pause"><i class="fas fa-play"></i></button>
+        <button class="mp-btn" id="mpLoopBtn" title="Loop"><i class="fas fa-redo"></i></button>
+      </div>
+      <div class="mp-volume-row">
+        <i class="fas fa-volume-down mp-vol-icon"></i>
+        <input type="range" class="mp-volume-slider" id="mpVolume" min="0" max="1" step="0.01" value="0.4">
+        <i class="fas fa-volume-up mp-vol-icon"></i>
+      </div>
+    </div>
+    <!-- Collapsed pill -->
+    <div id="music-pill" title="Open music player">
+      <div class="music-icon" id="mpPillVinyl"></div>
+      <div class="music-pill-info">
+        <div class="music-pill-title">Lofi Study Beats</div>
+        <div class="music-pill-sub">Click to expand</div>
+      </div>
+      <div class="music-wave" id="mpWave">
+        <span></span><span></span><span></span><span></span><span></span>
+      </div>
+    </div>
+  </div>
+
+  <!-- ===== TETRIS FLOAT BUTTON ===== -->
+  <!-- Tetris nudge bubble -->
+  <div id="tetrisNudge" class="tg-nudge">
+    <button class="tg-nudge-close" id="tetrisNudgeClose" title="Dismiss">✕</button>
+    <div class="tg-nudge-emoji">🎮</div>
+    <div class="tg-nudge-text">
+      <strong>Hey, bored?</strong>
+      <span>There's a Tetris game hiding here — give it a shot!</span>
+    </div>
+    <button class="tg-nudge-cta" id="tetrisNudgeCta">Play now ▶</button>
+    <div class="tg-nudge-arrow"></div>
+  </div>
+
+  <button id="tetrisBtn" title="Play Tetris" aria-label="Open Tetris">
+    <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" width="22" height="22">
+      <rect x="2"  y="2"  width="9" height="9" rx="2" fill="currentColor" opacity="0.9"/>
+      <rect x="13" y="2"  width="9" height="9" rx="2" fill="currentColor" opacity="0.6"/>
+      <rect x="2"  y="13" width="9" height="9" rx="2" fill="currentColor" opacity="0.6"/>
+      <rect x="13" y="13" width="9" height="9" rx="2" fill="currentColor" opacity="0.3"/>
+    </svg>
+  </button>
+
+  <!-- ===== TETRIS MODAL ===== -->
+  <div id="tetrisModal" class="tg-overlay" aria-modal="true" role="dialog" aria-label="Tetris Game">
+    <div class="tg-backdrop" id="tetrisBackdrop"></div>
+    <div class="tg-modal">
+      <div class="tg-header">
+        <div class="tg-title font-mono">&lt;TETRIS<span>/</span>&gt;</div>
+        <div class="tg-meta">
+          <div class="tg-score-box">
+            <span class="tg-score-label">SCORE</span>
+            <span class="tg-score-val" id="tgScore">0</span>
+          </div>
+          <div class="tg-score-box">
+            <span class="tg-score-label">LEVEL</span>
+            <span class="tg-score-val" id="tgLevel">1</span>
+          </div>
+          <div class="tg-score-box">
+            <span class="tg-score-label">LINES</span>
+            <span class="tg-score-val" id="tgLines">0</span>
+          </div>
+        </div>
+        <button class="tg-close" id="tetrisClose" title="Close">✕</button>
+      </div>
+      <div class="tg-body">
+        <div class="tg-left">
+          <canvas id="tetrisCanvas" width="200" height="400"></canvas>
+          <div id="tgOverlay" class="tg-game-overlay">
+            <div class="tg-overlay-content">
+              <div class="tg-overlay-title" id="tgOverlayTitle">TETRIS</div>
+              <div class="tg-overlay-sub" id="tgOverlaySub">Press Start to play</div>
+              <button class="tg-start-btn" id="tgStartBtn">▶ START</button>
+            </div>
+          </div>
+        </div>
+        <div class="tg-right">
+          <div class="tg-panel">
+            <div class="tg-panel-label font-mono">NEXT</div>
+            <canvas id="tgNextCanvas" width="80" height="80"></canvas>
+          </div>
+          <div class="tg-panel tg-controls">
+            <div class="tg-panel-label font-mono">CONTROLS</div>
+            <div class="tg-key-row"><kbd>←→</kbd><span>Move</span></div>
+            <div class="tg-key-row"><kbd>↑</kbd><span>Rotate</span></div>
+            <div class="tg-key-row"><kbd>↓</kbd><span>Soft drop</span></div>
+            <div class="tg-key-row"><kbd>Space</kbd><span>Hard drop</span></div>
+            <div class="tg-key-row"><kbd>P</kbd><span>Pause</span></div>
+          </div>
+          <div class="tg-panel tg-mobile-btns">
+            <div class="tg-panel-label font-mono">TOUCH</div>
+            <div class="tg-dpad">
+              <button class="tg-dpad-btn" id="tgUp">↑</button>
+              <div class="tg-dpad-row">
+                <button class="tg-dpad-btn" id="tgLeft">←</button>
+                <button class="tg-dpad-btn tg-dpad-down" id="tgDown">↓</button>
+                <button class="tg-dpad-btn" id="tgRight">→</button>
+              </div>
+              <button class="tg-dpad-btn tg-dpad-space" id="tgSpace">DROP</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- ===== END TETRIS ===== -->
+
+  <!-- Audio element — swap src for your own track -->
+  <audio id="bgMusic" loop preload="none">
+    <source src="https://cdn.pixabay.com/audio/2022/05/27/audio_1808fbf07a.mp3" type="audio/mpeg">
+  </audio>
+
   <!-- ===== SCRIPTS ===== -->
   <script>
+    // ── WELCOME GATE ──────────────────────────────────────────────────
+    (function() {
+      const overlay  = document.getElementById('welcomeOverlay');
+      const steps    = document.querySelectorAll('.wg-panel');
+      const dots     = document.querySelectorAll('.wg-step');
+      let currentStep = 0;
+
+      // Lock scroll on load
+      document.body.classList.add('wg-locked');
+
+      function showStep(n) {
+        steps.forEach((p, i) => p.classList.toggle('active', i === n));
+        dots.forEach((d, i) => {
+          d.classList.toggle('active', i === n);
+          d.classList.toggle('done', i < n);
+        });
+        currentStep = n;
+      }
+
+      window.wgNext = function() {
+        if (currentStep < steps.length - 1) showStep(currentStep + 1);
+      };
+
+      window.wgBack = function() {
+        if (currentStep > 0) showStep(currentStep - 1);
+      };
+
+      window.wgSelect = function(btn, groupId) {
+        const group = document.getElementById(groupId);
+        group.querySelectorAll('.wg-choice').forEach(b => b.classList.remove('selected'));
+        btn.classList.add('selected');
+        // Enable the next/enter button for this step
+        const nextBtn = group.closest('.wg-panel').querySelector('.wg-btn--primary');
+        if (nextBtn) nextBtn.disabled = false;
+      };
+
+      window.wgEnter = function() {
+        const musicChoice   = document.querySelector('#wgChoices2 .wg-choice.selected');
+        const purposeChoice = document.querySelector('#wgChoices1 .wg-choice.selected');
+        const wantsMusic    = musicChoice && musicChoice.dataset.value === 'yes';
+
+        // ── Silent Formspree ping ─────────────────────────────────────
+        const purposeLabel = purposeChoice
+          ? purposeChoice.querySelector('span').textContent.trim()
+          : 'Unknown';
+
+        const payload = {
+          _subject:     '\ud83d\udc4b New visitor on your portfolio!',
+          purpose:      purposeLabel,
+          music_choice: wantsMusic ? 'Yes \u2014 autoplay on' : 'No \u2014 muted',
+          visited_at:   new Date().toLocaleString('en-PH', { timeZone: 'Asia/Manila' }),
+          page_url:     window.location.href,
+          _replyto:     'no-reply@visitor.log'
+        };
+
+        fetch('https://formspree.io/f/mqejwoyl', {
+          method:  'POST',
+          headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
+          body:    JSON.stringify(payload)
+        }).catch(() => {}); // silent — never blocks the user
+        // ─────────────────────────────────────────────────────────────
+
+        // Animate out
+        overlay.classList.add('hidden');
+        document.body.classList.remove('wg-locked');
+
+        // Handle music
+        if (wantsMusic) {
+          const audio = document.getElementById('bgMusic');
+          if (audio) {
+            audio.play().then(() => {
+              // Mirror the play state into the existing music player UI
+              const mpPlayBtn   = document.getElementById('mpPlayBtn');
+              const mpVinyl     = document.getElementById('mpVinylLarge');
+              const mpPillVinyl = document.getElementById('mpPillVinyl');
+              const mpWave      = document.getElementById('mpWave');
+              if (mpPlayBtn)   mpPlayBtn.innerHTML = '<i class="fas fa-pause"></i>';
+              if (mpVinyl)     mpVinyl.classList.add('spinning');
+              if (mpPillVinyl) mpPillVinyl.classList.add('spinning');
+              if (mpWave)      mpWave.classList.remove('paused');
+            }).catch(() => {});
+          }
+        }
+
+        // Remove from DOM after transition
+        setTimeout(() => overlay.remove(), 600);
+      };
+    })();
+    // ─────────────────────────────────────────────────────────────────
+
+    // ── THEME TOGGLE ────────────────────────────────────────────────
+    (function() {
+      var btn   = document.getElementById('themeToggle');
+      var icon  = btn.querySelector('.tt-icon');
+      var label = btn.querySelector('.tt-label');
+      var DAY   = 'day-mode';
+      var saved = localStorage.getItem('rj_theme');
+
+      function applyTheme(day) {
+        if (day) {
+          document.body.classList.add(DAY);
+          icon.textContent  = '☀️';
+          label.textContent = 'Day';
+        } else {
+          document.body.classList.remove(DAY);
+          icon.textContent  = '🌙';
+          label.textContent = 'Night';
+        }
+      }
+
+      if (saved === 'day') applyTheme(true);
+
+      btn.addEventListener('click', function() {
+        var isDay = document.body.classList.contains(DAY);
+        applyTheme(!isDay);
+        localStorage.setItem('rj_theme', isDay ? 'night' : 'day');
+      });
+    })();
+    // ─────────────────────────────────────────────────────────────────
+
     // Mobile nav toggle
     const hamburger = document.getElementById('hamburger');
     const navLinks = document.getElementById('navLinks');
@@ -869,6 +1189,350 @@
     document.addEventListener('keydown', e => {
       if (e.key === 'Escape' && vModal.classList.contains('active')) closeVideo();
     });
+    // ─────────────────────────────────────────────────────────────────
+
+    // ── MUSIC PLAYER ─────────────────────────────────────────────────
+    const audio        = document.getElementById('bgMusic');
+    const mpPlayBtn    = document.getElementById('mpPlayBtn');
+    const mpMuteBtn    = document.getElementById('mpMuteBtn');
+    const mpLoopBtn    = document.getElementById('mpLoopBtn');
+    const mpVolume     = document.getElementById('mpVolume');
+    const mpProgressFill = document.getElementById('mpProgressFill');
+    const mpProgressBar  = document.getElementById('mpProgressBar');
+    const mpCurrent    = document.getElementById('mpCurrent');
+    const mpDuration   = document.getElementById('mpDuration');
+    const mpVinylLarge = document.getElementById('mpVinylLarge');
+    const mpPillVinyl  = document.getElementById('mpPillVinyl');
+    const mpWave       = document.getElementById('mpWave');
+    const mpPanel      = document.getElementById('music-panel');
+    const mpPill       = document.getElementById('music-pill');
+    const mpCollapseBtn= document.getElementById('mpCollapseBtn');
+
+    let isPlaying = false;
+    let isMuted   = false;
+    let isLooping = audio.loop; // true by default
+
+    audio.volume = parseFloat(mpVolume.value);
+
+    function fmt(s) {
+      if (isNaN(s)) return '--:--';
+      const m = Math.floor(s / 60), sec = Math.floor(s % 60);
+      return m + ':' + String(sec).padStart(2,'0');
+    }
+
+    function setPlayState(playing) {
+      isPlaying = playing;
+      mpPlayBtn.innerHTML = `<i class="fas fa-${playing ? 'pause' : 'play'}"></i>`;
+      if (playing) {
+        mpVinylLarge.classList.add('spinning');
+        mpPillVinyl.classList.add('spinning');
+        mpWave.classList.remove('paused');
+      } else {
+        mpVinylLarge.classList.remove('spinning');
+        mpPillVinyl.classList.remove('spinning');
+        mpWave.classList.add('paused');
+      }
+    }
+
+    mpPlayBtn.addEventListener('click', () => {
+      if (isPlaying) { audio.pause(); setPlayState(false); }
+      else { audio.play().then(() => setPlayState(true)).catch(() => {}); }
+    });
+
+    // Pill click = toggle panel; if paused first click also plays
+    mpPill.addEventListener('click', () => {
+      mpPanel.classList.add('open');
+      mpPill.style.display = 'none';
+      if (!isPlaying) {
+        audio.play().then(() => setPlayState(true)).catch(() => {});
+      }
+    });
+
+    mpCollapseBtn.addEventListener('click', () => {
+      mpPanel.classList.remove('open');
+      mpPill.style.display = 'flex';
+    });
+
+    mpMuteBtn.addEventListener('click', () => {
+      isMuted = !isMuted;
+      audio.muted = isMuted;
+      mpMuteBtn.innerHTML = `<i class="fas fa-volume-${isMuted ? 'mute' : 'up'}"></i>`;
+      mpMuteBtn.style.color = isMuted ? 'var(--orange)' : '';
+    });
+
+    mpLoopBtn.addEventListener('click', () => {
+      isLooping = !isLooping;
+      audio.loop = isLooping;
+      mpLoopBtn.style.color = isLooping ? 'var(--blue)' : '';
+      mpLoopBtn.style.borderColor = isLooping ? 'rgba(0,194,255,0.3)' : '';
+    });
+    // Highlight loop button (on by default)
+    mpLoopBtn.style.color = 'var(--blue)';
+    mpLoopBtn.style.borderColor = 'rgba(0,194,255,0.3)';
+
+    mpVolume.addEventListener('input', () => {
+      audio.volume = parseFloat(mpVolume.value);
+      if (audio.volume === 0) { audio.muted = true; isMuted = true; mpMuteBtn.innerHTML = '<i class="fas fa-volume-mute"></i>'; }
+      else if (isMuted) { audio.muted = false; isMuted = false; mpMuteBtn.innerHTML = '<i class="fas fa-volume-up"></i>'; mpMuteBtn.style.color = ''; }
+    });
+
+    audio.addEventListener('timeupdate', () => {
+      if (!audio.duration) return;
+      const pct = (audio.currentTime / audio.duration) * 100;
+      mpProgressFill.style.width = pct + '%';
+      mpCurrent.textContent = fmt(audio.currentTime);
+    });
+
+    audio.addEventListener('loadedmetadata', () => {
+      mpDuration.textContent = fmt(audio.duration);
+    });
+
+    audio.addEventListener('ended', () => {
+      if (!audio.loop) setPlayState(false);
+    });
+
+    mpProgressBar.addEventListener('click', e => {
+      if (!audio.duration) return;
+      const rect = mpProgressBar.getBoundingClientRect();
+      audio.currentTime = ((e.clientX - rect.left) / rect.width) * audio.duration;
+    });
+    // ─────────────────────────────────────────────────────────────────
+
+    // ── TETRIS ───────────────────────────────────────────────────────
+    (function() {
+      const modal     = document.getElementById('tetrisModal');
+      const backdrop  = document.getElementById('tetrisBackdrop');
+      const openBtn   = document.getElementById('tetrisBtn');
+      const closeBtn  = document.getElementById('tetrisClose');
+      const canvas    = document.getElementById('tetrisCanvas');
+      const nextCvs   = document.getElementById('tgNextCanvas');
+      const ctx       = canvas.getContext('2d');
+      const nctx      = nextCvs.getContext('2d');
+      const overlay   = document.getElementById('tgOverlay');
+      const startBtn  = document.getElementById('tgStartBtn');
+      const oTitle    = document.getElementById('tgOverlayTitle');
+      const oSub      = document.getElementById('tgOverlaySub');
+      const elScore   = document.getElementById('tgScore');
+      const elLevel   = document.getElementById('tgLevel');
+      const elLines   = document.getElementById('tgLines');
+
+      const COLS = 10, ROWS = 20, BLOCK = 20;
+      const COLORS = ['','#00c2ff','#00e5a0','#ff7c3b','#f7c948','#b07eff','#ff4f7b','#4fc3f7'];
+      const PIECES = [
+        null,
+        [[1,1,1,1]],
+        [[2,2],[2,2]],
+        [[0,3,0],[3,3,3]],
+        [[4,0],[4,0],[4,4]],
+        [[0,5],[0,5],[5,5]],
+        [[6,6,0],[0,6,6]],
+        [[0,7,7],[7,7,0]]
+      ];
+
+      let board, piece, pieceX, pieceY, nextPiece;
+      let score=0, level=1, lines=0, speed=600;
+      let running=false, paused=false, raf, lastTime=0, dropCounter=0;
+
+      function newBoard() { return Array.from({length:ROWS}, ()=>Array(COLS).fill(0)); }
+      function randPiece() {
+        const id = Math.floor(Math.random()*7)+1;
+        return { id, shape: PIECES[id].map(r=>[...r]) };
+      }
+
+      function drawBlock(r, c, color, context, size) {
+        context = context || ctx; size = size || BLOCK;
+        context.fillStyle = color;
+        context.fillRect(c*size+1, r*size+1, size-2, size-2);
+        context.fillStyle = 'rgba(255,255,255,0.15)';
+        context.fillRect(c*size+1, r*size+1, size-2, 3);
+        context.fillStyle = 'rgba(0,0,0,0.2)';
+        context.fillRect(c*size+1, r*size+size-4, size-2, 3);
+      }
+
+      function drawBoard() {
+        ctx.clearRect(0,0,canvas.width,canvas.height);
+        ctx.strokeStyle = 'rgba(0,194,255,0.05)';
+        ctx.lineWidth = 1;
+        for(let r=0;r<ROWS;r++) for(let c=0;c<COLS;c++) ctx.strokeRect(c*BLOCK, r*BLOCK, BLOCK, BLOCK);
+        for(let r=0;r<ROWS;r++) for(let c=0;c<COLS;c++) {
+          if(board[r][c]) drawBlock(r, c, COLORS[board[r][c]]);
+        }
+      }
+
+      function drawPiece(ghost) {
+        if(!piece) return;
+        var gy = pieceY;
+        if(ghost) { while(!collides(piece.shape, pieceX, gy+1)) gy++; }
+        piece.shape.forEach(function(row,r) { row.forEach(function(v,c) {
+          if(v) {
+            if(ghost && gy!==pieceY) {
+              ctx.fillStyle='rgba(0,194,255,0.15)';
+              ctx.fillRect((pieceX+c)*BLOCK+1,(gy+r)*BLOCK+1,BLOCK-2,BLOCK-2);
+            } else {
+              drawBlock(pieceY+r, pieceX+c, COLORS[v]);
+            }
+          }
+        }); });
+      }
+
+      function drawNext() {
+        nctx.clearRect(0,0,nextCvs.width,nextCvs.height);
+        if(!nextPiece) return;
+        var s=nextPiece.shape, bk=16;
+        var ox=Math.floor((nextCvs.width/bk - s[0].length)/2);
+        var oy=Math.floor((nextCvs.height/bk - s.length)/2);
+        s.forEach(function(row,r) { row.forEach(function(v,c) {
+          if(v) { nctx.fillStyle=COLORS[v]; nctx.fillRect((ox+c)*bk+1,(oy+r)*bk+1,bk-2,bk-2); }
+        }); });
+      }
+
+      function collides(shape, px, py) {
+        for(var r=0;r<shape.length;r++) for(var c=0;c<shape[r].length;c++) {
+          if(!shape[r][c]) continue;
+          var nr=py+r, nc=px+c;
+          if(nr>=ROWS || nc<0 || nc>=COLS) return true;
+          if(nr>=0 && board[nr][nc]) return true;
+        }
+        return false;
+      }
+
+      function lock() {
+        piece.shape.forEach(function(row,r) { row.forEach(function(v,c) {
+          if(v && pieceY+r>=0) board[pieceY+r][pieceX+c]=v;
+        }); });
+        clearLines();
+        piece = nextPiece; nextPiece = randPiece();
+        pieceX = Math.floor((COLS - piece.shape[0].length)/2); pieceY = 0;
+        drawNext();
+        if(collides(piece.shape, pieceX, pieceY)) gameOver();
+      }
+
+      function clearLines() {
+        var cleared=0;
+        for(var r=ROWS-1;r>=0;r--) {
+          if(board[r].every(function(v){return v;})) {
+            board.splice(r,1); board.unshift(Array(COLS).fill(0)); cleared++; r++;
+          }
+        }
+        if(!cleared) return;
+        lines+=cleared;
+        score += [0,100,300,500,800][cleared] * level;
+        level = Math.floor(lines/10)+1;
+        speed = Math.max(100, 600-(level-1)*50);
+        elScore.textContent=score; elLevel.textContent=level; elLines.textContent=lines;
+      }
+
+      function rotate(shape) { return shape[0].map(function(_,i){ return shape.map(function(r){ return r[i]; }).reverse(); }); }
+      function moveLeft()  { if(!collides(piece.shape,pieceX-1,pieceY)) pieceX--; }
+      function moveRight() { if(!collides(piece.shape,pieceX+1,pieceY)) pieceX++; }
+      function softDrop()  { if(!collides(piece.shape,pieceX,pieceY+1)) pieceY++; else lock(); }
+      function hardDrop()  { while(!collides(piece.shape,pieceX,pieceY+1)) pieceY++; lock(); }
+      function rotatePiece() {
+        var r=rotate(piece.shape);
+        if(!collides(r,pieceX,pieceY)) piece.shape=r;
+        else if(!collides(r,pieceX-1,pieceY)) { piece.shape=r; pieceX--; }
+        else if(!collides(r,pieceX+1,pieceY)) { piece.shape=r; pieceX++; }
+      }
+
+      function gameLoop(ts) {
+        ts = ts || 0;
+        if(!running||paused) return;
+        dropCounter += ts - lastTime; lastTime = ts;
+        if(dropCounter > speed) { softDrop(); dropCounter=0; }
+        drawBoard(); drawPiece(true); drawPiece(false);
+        raf = requestAnimationFrame(gameLoop);
+      }
+
+      function startGame() {
+        board=newBoard(); score=0; level=1; lines=0; speed=600;
+        elScore.textContent=0; elLevel.textContent=1; elLines.textContent=0;
+        nextPiece=randPiece(); piece=randPiece();
+        pieceX=Math.floor((COLS-piece.shape[0].length)/2); pieceY=0;
+        drawNext(); overlay.style.display='none';
+        running=true; paused=false; lastTime=0; dropCounter=0;
+        cancelAnimationFrame(raf);
+        raf=requestAnimationFrame(gameLoop);
+      }
+
+      function gameOver() {
+        running=false; cancelAnimationFrame(raf);
+        oTitle.textContent='GAME OVER'; oSub.textContent='Score: '+score;
+        startBtn.textContent='\u21ba RETRY'; overlay.style.display='flex';
+      }
+
+      function pauseGame() {
+        if(!running) return;
+        paused=!paused;
+        if(!paused) { lastTime=0; dropCounter=0; raf=requestAnimationFrame(gameLoop); }
+      }
+
+      document.addEventListener('keydown', function(e) {
+        if(!modal.classList.contains('active')) return;
+        if(e.key==='ArrowLeft')  { e.preventDefault(); if(running&&!paused) moveLeft(); }
+        if(e.key==='ArrowRight') { e.preventDefault(); if(running&&!paused) moveRight(); }
+        if(e.key==='ArrowDown')  { e.preventDefault(); if(running&&!paused) softDrop(); }
+        if(e.key==='ArrowUp')    { e.preventDefault(); if(running&&!paused) rotatePiece(); }
+        if(e.key===' ')          { e.preventDefault(); if(running&&!paused) hardDrop(); }
+        if(e.key==='p'||e.key==='P') pauseGame();
+      });
+
+      document.getElementById('tgLeft') .addEventListener('click',function(){ if(running&&!paused) moveLeft(); });
+      document.getElementById('tgRight').addEventListener('click',function(){ if(running&&!paused) moveRight(); });
+      document.getElementById('tgDown') .addEventListener('click',function(){ if(running&&!paused) softDrop(); });
+      document.getElementById('tgUp')   .addEventListener('click',function(){ if(running&&!paused) rotatePiece(); });
+      document.getElementById('tgSpace').addEventListener('click',function(){ if(running&&!paused) hardDrop(); });
+
+      openBtn.addEventListener('click', function(){
+        modal.classList.add('active');
+        document.body.style.overflow='hidden';
+      });
+
+      function closeModal() {
+        modal.classList.remove('active');
+        document.body.style.overflow='';
+        running=false; cancelAnimationFrame(raf);
+        oTitle.textContent='TETRIS'; oSub.textContent='Press Start to play';
+        startBtn.textContent='\u25b6 START'; overlay.style.display='flex';
+      }
+
+      closeBtn.addEventListener('click', closeModal);
+      backdrop.addEventListener('click', closeModal);
+      document.addEventListener('keydown', function(e){ if(e.key==='Escape'&&modal.classList.contains('active')) closeModal(); });
+      startBtn.addEventListener('click', startGame);
+
+      ctx.strokeStyle='rgba(0,194,255,0.05)';
+      for(var r=0;r<ROWS;r++) for(var c=0;c<COLS;c++) ctx.strokeRect(c*BLOCK,r*BLOCK,BLOCK,BLOCK);
+
+      // ── Nudge bubble ──────────────────────────────────────────────
+      var nudge     = document.getElementById('tetrisNudge');
+      var nudgeClose= document.getElementById('tetrisNudgeClose');
+      var nudgeCta  = document.getElementById('tetrisNudgeCta');
+      var nudgeSeen = sessionStorage.getItem('tg_nudge_seen');
+
+      if(!nudgeSeen) {
+        // Show after 6s, only if welcome gate is already gone
+        setTimeout(function() {
+          if(!document.getElementById('welcomeOverlay')) {
+            nudge.classList.add('visible');
+            // Auto-hide after 8s
+            setTimeout(function(){ nudge.classList.remove('visible'); }, 8000);
+          }
+        }, 6000);
+      }
+
+      function dismissNudge() {
+        nudge.classList.remove('visible');
+        sessionStorage.setItem('tg_nudge_seen','1');
+      }
+
+      nudgeClose.addEventListener('click', function(e){ e.stopPropagation(); dismissNudge(); });
+      nudgeCta.addEventListener('click', function() {
+        dismissNudge();
+        modal.classList.add('active');
+        document.body.style.overflow='hidden';
+      });
+      // ─────────────────────────────────────────────────────────────
+    })();
     // ─────────────────────────────────────────────────────────────────
   </script>
 </body>
