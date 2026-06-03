@@ -285,9 +285,24 @@
       font-family:'IBM Plex Mono',monospace;
     }
 
-    @media(max-width:600px) {
+    /* Keyboard focus */
+    *:focus-visible {
+      outline: 2px solid var(--blue);
+      outline-offset: 3px;
+      border-radius: 4px;
+    }
+
+    @media(max-width: 900px) {
+      .gallery-grid { grid-template-columns: repeat(2, 1fr); gap: 16px; }
+    }
+    @media(max-width: 600px) {
       .gallery-hero { padding:48px 20px 36px; }
-      .gallery-grid { grid-template-columns:1fr; }
+      .gallery-grid { grid-template-columns: 1fr; gap: 14px; }
+      .gallery-wrap { padding: 0 16px 60px; }
+      .filter-bar { padding: 0 16px 28px; gap: 8px; }
+      .filter-btn { padding: 8px 14px; font-size: 0.78rem; min-height: 40px; }
+      nav { padding: 0 16px; }
+      .gallery-hero h1 { font-size: clamp(1.6rem, 8vw, 2.4rem); }
     }
   </style>
 </head>
@@ -321,7 +336,7 @@
   </div>
 
   <div class="gallery-footer">
-    ✦ click any image to expand · Roy Juntilla — IT Portfolio ✦
+    ✦ click any image to expand · Roy Jhun Padecio — IT Portfolio ✦
   </div>
 
   <!-- Lightbox -->
@@ -337,18 +352,18 @@
     // Gallery data — replace imageUrl values with your actual photo paths
     // e.g. "assets/images/worldskills1.jpg"
     const gallery = [
-      { id:1, title:"WorldSkills ASEAN 2025 — Competition Day", category:"competition", desc:"Information Network Cabling at the ASEAN regional level.", imageUrl:"https://picsum.photos/id/1/600/450" },
-      { id:2, title:"Structured Cabling Installation", category:"networking", desc:"Terminating and testing Cat6 patch panels in a live environment.", imageUrl:"https://picsum.photos/id/20/600/450" },
-      { id:3, title:"INC Skills Demo — Patch Panel Termination", category:"competition", desc:"Precision wire termination during competition prep.", imageUrl:"https://picsum.photos/id/96/600/450" },
-      { id:4, title:"GitHub Ticket System — Live Demo", category:"projects", desc:"Presenting the responsive IT ticketing system capstone project.", imageUrl:"https://picsum.photos/id/106/600/450" },
-      { id:5, title:"Network Topology Design", category:"networking", desc:"Logical and physical topology mapping for small office setup.", imageUrl:"https://picsum.photos/id/29/600/450" },
-      { id:6, title:"ASEAN Opening Ceremony", category:"events", desc:"WorldSkills ASEAN 2025 opening ceremony — representing the Philippines.", imageUrl:"https://picsum.photos/id/77/600/450" },
-      { id:7, title:"Hardware Servicing Workshop", category:"projects", desc:"Diagnosing and repairing desktop components at the IT lab.", imageUrl:"https://picsum.photos/id/104/600/450" },
-      { id:8, title:"Competition Stage — Ready", category:"competition", desc:"Final preparations before the Information Network Cabling event.", imageUrl:"https://picsum.photos/id/169/600/450" },
-      { id:9, title:"Team Philippines", category:"events", desc:"With fellow Filipino competitors at the ASEAN regional stage.", imageUrl:"https://picsum.photos/id/64/600/450" },
-      { id:10, title:"Cable Management Project", category:"networking", desc:"Clean cable routing and management for a server rack build.", imageUrl:"https://picsum.photos/id/15/600/450" },
-      { id:11, title:"Certification Day", category:"events", desc:"Receiving the TESDA NC II Computer Hardware Servicing certificate.", imageUrl:"https://picsum.photos/id/83/600/450" },
-      { id:12, title:"Snake Game PWA — Build", category:"projects", desc:"Development session for the offline-capable PWA snake game.", imageUrl:"https://picsum.photos/id/26/600/450" },
+      { id:1, title:"WorldSkills ASEAN 2025 — Competition Day", category:"competition", desc:"Information Network Cabling at the ASEAN regional level.", imageUrl:"assets/images/comp1.jpg" },
+      { id:2, title:"Structured Cabling Installation", category:"networking", desc:"Terminating and testing Cat6 patch panels in a live environment.", imageUrl:"assets/images/comp2.jpg" },
+      { id:3, title:"INC Skills Demo — Patch Panel Termination", category:"competition", desc:"Precision wire termination during competition prep.", imageUrl:"assets/images/comp6.jpg" },
+      { id:4, title:"GitHub Ticket System — Live Demo", category:"projects", desc:"Presenting the responsive IT ticketing system capstone project.", imageUrl:"assets/images/git1.png" },
+      { id:5, title:"Network Topology Design", category:"networking", desc:"Logical and physical topology mapping for small office setup.", imageUrl:"assets/images/comp5.jpg" },
+      { id:6, title:"ASEAN Opening Ceremony", category:"events", desc:"WorldSkills ASEAN 2025 opening ceremony — representing the Philippines.", imageUrl:"assets/images/open1.jpg" },
+      { id:7, title:"Hardware Servicing Workshop", category:"projects", desc:"Diagnosing and repairing desktop components at the IT lab.", imageUrl:"assets/images/comp7.jpg" },
+      { id:8, title:"Competition Stage — Ready", category:"competition", desc:"Final preparations before the Information Network Cabling event.", imageUrl:"assets/images/comp8.jpg" },
+      { id:9, title:"Team Philippines", category:"events", desc:"With fellow Filipino competitors at the ASEAN regional stage.", imageUrl:"assets/images/comp9.jpg" },
+      { id:10, title:"Cable Management Project", category:"networking", desc:"Clean cable routing and management for a server rack build.", imageUrl:"assets/images/rack1.jpg" },
+      { id:11, title:"Certification Day", category:"events", desc:"Receiving the TESDA NC II Computer Hardware Servicing certificate.", imageUrl:"assets/images/cert.jpg" },
+      { id:12, title:"TESDA REGION XI ", category:"TEAM", desc:"Team Davao/Team Onse.", imageUrl:"assets/images/dvo.jpg" },
     ];
 
     const grid = document.getElementById('galleryGrid');
@@ -414,8 +429,7 @@
 
     // Back button
     document.getElementById('backBtn').addEventListener('click', () => {
-      if (document.referrer) window.history.back();
-      else window.location.href = 'homepage.html';
+      window.location.href = 'index.html';
     });
 
     render('all');
