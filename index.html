@@ -1,0 +1,1539 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Roy Jhun Padecio — IT Professional | Network &amp; Infrastructure</title>
+  <meta name="description" content="IT Technician & WorldSkills ASEAN 2025 Competitor specializing in Network Infrastructure, Hardware Diagnostics, and Information Network Cabling.">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <!-- ===== WELCOME GATE POPUP ===== -->
+  <div id="welcomeOverlay" class="wg-overlay" aria-modal="true" role="dialog" aria-label="Welcome">
+    <div class="wg-backdrop"></div>
+    <div class="wg-modal">
+
+      <!-- Ambient glow rings -->
+      <div class="wg-glow"></div>
+      <div class="wg-glow wg-glow--2"></div>
+
+      <!-- Header -->
+      <div class="wg-header">
+        <div class="wg-logo font-mono">&lt;RJ<span>/</span>&gt;</div>
+        <div class="wg-step-track">
+          <span class="wg-step active" data-step="0"></span>
+          <span class="wg-step" data-step="1"></span>
+          <span class="wg-step" data-step="2"></span>
+        </div>
+      </div>
+
+      <!-- ── STEP 0 : Welcome ── -->
+      <div class="wg-panel active" id="wgStep0">
+        <div class="wg-icon-badge"><i class="fas fa-wifi"></i></div>
+        <h2 class="wg-title">Hey there,<br><span>welcome in.</span></h2>
+        <p class="wg-sub font-mono">// establishing connection…</p>
+        <p class="wg-body">Before you dive in, I'd love to know a little about you — takes about 10 seconds.</p>
+        <button class="wg-btn wg-btn--primary" onclick="wgNext()">Let's go <i class="fas fa-arrow-right"></i></button>
+      </div>
+
+      <!-- ── STEP 1 : Why are you here? ── -->
+      <div class="wg-panel" id="wgStep1">
+        <p class="wg-label font-mono">01 / purpose of visit</p>
+        <h2 class="wg-title">What brings you here?</h2>
+        <p class="wg-body">Select the option that best describes you.</p>
+        <div class="wg-choices" id="wgChoices1">
+          <button class="wg-choice" data-value="recruiter" onclick="wgSelect(this,'wgChoices1')">
+            <i class="fas fa-briefcase"></i>
+            <span>I'm a Recruiter / Employer</span>
+          </button>
+          <button class="wg-choice" data-value="client" onclick="wgSelect(this,'wgChoices1')">
+            <i class="fas fa-handshake"></i>
+            <span>Looking to hire for a project</span>
+          </button>
+          <button class="wg-choice" data-value="peer" onclick="wgSelect(this,'wgChoices1')">
+            <i class="fas fa-code"></i>
+            <span>Fellow developer / IT peer</span>
+          </button>
+          <button class="wg-choice" data-value="curious" onclick="wgSelect(this,'wgChoices1')">
+            <i class="fas fa-eye"></i>
+            <span>Just exploring</span>
+          </button>
+        </div>
+        <div class="wg-nav">
+          <button class="wg-btn wg-btn--ghost" onclick="wgBack()"><i class="fas fa-arrow-left"></i> Back</button>
+          <button class="wg-btn wg-btn--primary" id="wgNext1" onclick="wgNext()" disabled>Next <i class="fas fa-arrow-right"></i></button>
+        </div>
+      </div>
+
+      <!-- ── STEP 2 : Music preference ── -->
+      <div class="wg-panel" id="wgStep2">
+        <p class="wg-label font-mono">02 / audio preference</p>
+        <h2 class="wg-title">Background music?</h2>
+        <p class="wg-body">There's ambient music on this site. Want it to autoplay?</p>
+        <div class="wg-choices" id="wgChoices2">
+          <button class="wg-choice" data-value="yes" onclick="wgSelect(this,'wgChoices2')">
+            <i class="fas fa-music"></i>
+            <span>Yes, turn it on</span>
+          </button>
+          <button class="wg-choice" data-value="no" onclick="wgSelect(this,'wgChoices2')">
+            <i class="fas fa-volume-mute"></i>
+            <span>No thanks, I'll be quiet</span>
+          </button>
+        </div>
+        <div class="wg-nav">
+          <button class="wg-btn wg-btn--ghost" onclick="wgBack()"><i class="fas fa-arrow-left"></i> Back</button>
+          <button class="wg-btn wg-btn--primary" id="wgNext2" onclick="wgEnter()" disabled>Enter Site <i class="fas fa-door-open"></i></button>
+        </div>
+      </div>
+
+    </div>
+  </div>
+  <!-- ===== END WELCOME GATE ===== -->
+
+  <!-- ===== NAVIGATION ===== -->
+  <nav id="navbar">
+    <div class="container">
+      <a href="#home" class="logo">&lt;RJ<span>/</span>&gt;</a>
+      <button id="themeToggle" title="Toggle day / night mode" aria-label="Toggle theme"><span class="tt-icon">🌙</span><span class="tt-label">Night</span></button>
+      <div class="hamburger" id="hamburger"><i class="fas fa-bars"></i></div>
+      <ul class="nav-links" id="navLinks">
+        <li><a href="#about">About</a></li>
+        <li><a href="#skills">Skills</a></li>
+        <li><a href="#achievements">Achievements</a></li>
+        <li><a href="#projects">Projects</a></li>
+        <li><a href="#certifications">Certs</a></li>
+        <li><a href="#videos">Videos</a></li>
+        <li><a href="#contact">Contact</a></li>
+        <li><a href="gallery.html">Gallery</a></li>
+        <li><a href="#" class="btn-nav">Resume ↗</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <!-- ===== HERO ===== -->
+  <header class="hero" id="home">
+    <div class="container">
+      <div class="hero-inner">
+        <!-- LEFT -->
+        <div class="hero-left">
+          <div class="hero-label">OPEN TO WORK · FULL-TIME &amp; FREELANCE</div>
+          <h1>Hi, I'm <span class="name">Roy </span><br>Jhun.</h1>
+          <p class="hero-title font-mono">// IT Technician &amp; Network Infrastructure Specialist</p>
+          <p class="hero-desc">
+            WorldSkills ASEAN 2025 Competitor in Information Network Cabling.
+            Passionate about bridging the physical and digital layers of IT — from
+            hands-on hardware diagnostics to designing and deploying robust local networks.
+          </p>
+          <div class="hero-actions">
+            <a href="#projects" class="btn btn-primary"><i class="fas fa-code"></i> View My Work</a>
+            <a href="#contact" class="btn btn-outline"><i class="fas fa-paper-plane"></i> Hire Me</a>
+            <a href="gallery.html" class="btn btn-ghost"><i class="fas fa-images"></i> Gallery</a>
+          </div>
+          <div class="hero-stats">
+            <div class="stat-item">
+              <div class="stat-num">1<span>×</span></div>
+              <div class="stat-label">WorldSkills<br>Competitor</div>
+            </div>
+            <div class="stat-item">
+              <div class="stat-num">3<span>+</span></div>
+              <div class="stat-label">Years in<br>IT Field</div>
+            </div>
+            <div class="stat-item">
+              <div class="stat-num">10<span>+</span></div>
+              <div class="stat-label">Projects<br>Completed</div>
+            </div>
+          </div>
+        </div>
+        <!-- RIGHT — profile card -->
+        <div>
+          <div class="hero-card">
+            <div class="hero-avatar-placeholder">
+              <!-- Replace with: <img src="assets/images/picture.jpg" alt="Roy POgi" class="hero-avatar"> -->
+              <i class="fas fa-user"></i>
+            </div>
+            <div class="card-name">Roy Jhun Padecio</div>
+            <div class="card-role font-mono">IT Technician · Network Specialist</div>
+            <div class="card-meta">
+              <div class="meta-row"><i class="fas fa-map-marker-alt"></i><div>Philippines &nbsp;<span>🇵🇭</span></div></div>
+              <div class="meta-row"><i class="fas fa-trophy"></i><div><span>WorldSkills ASEAN 2025</span> — INC</div></div>
+              <div class="meta-row"><i class="fas fa-network-wired"></i><div>Networking &amp; Cabling</div></div>
+              <div class="meta-row"><i class="fas fa-tools"></i><div>Hardware Diagnostics</div></div>
+              <div class="meta-row"><i class="fas fa-graduation-cap"></i><div><span>ICT / IT 3rd Year College </span></div></div>
+              <div class="meta-row"><i class="fas fa-circle" style="color:var(--green);font-size:0.4rem;"></i><div><span style="color:var(--green);">Available</span> for opportunities</div></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- ===== ABOUT ===== -->
+  <section id="about">
+    <div class="container">
+      <!-- Featured Achievement Banner -->
+      <div class="achievement-banner fade-up">
+        <div class="trophy">🏆</div>
+        <div>
+          <h3>WorldSkills ASEAN 2025 — Information Network Cabling Competitor</h3>
+          <p>Represented the Philippines in Information Network Cabling at the WorldSkills ASEAN regional competition — one of the most prestigious skills competitions in Southeast Asia.</p>
+        </div>
+        <span class="badge badge-green">ASEAN Regional Competitor</span>
+      </div>
+
+      <span class="label">Who I Am</span>
+      <h2 class="section-title">About Me</h2>
+      <div class="section-divider"></div>
+
+      <div class="about-grid">
+        <!-- Left: Profile card -->
+        <div>
+          <div class="about-card fade-up">
+            <img src="assets/images/picture.jpg" alt="Roy pogi" class="about-img"
+                 onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
+            <div style="display:none;width:140px;height:140px;border-radius:50%;background:var(--navy-4);border:3px solid var(--blue);box-shadow:0 0 30px var(--blue-glow);margin:0 auto 20px;align-items:center;justify-content:center;font-size:2.5rem;color:var(--blue);"><i class="fas fa-user"></i></div>
+            <div class="about-name">Roy Jhun Padecio</div>
+            <div class="about-role font-mono">IT Technician &amp; Network Specialist</div>
+            <div class="about-tags">
+              <span class="tag">Networking</span>
+              <span class="tag">Cabling</span>
+              <span class="tag">Hardware</span>
+              <span class="tag">Web Dev</span>
+              <span class="tag">IT Support</span>
+            </div>
+            <div class="about-divider"></div>
+            <div class="contact-info">
+              <div class="contact-row"><i class="fas fa-map-marker-alt"></i> Philippines 🇵🇭</div>
+              <div class="contact-row"><i class="fas fa-briefcase"></i> Freelance &amp; Full-time</div>
+              <div class="contact-row"><i class="fab fa-facebook"></i> <a href="https://www.facebook.com/shnratensie" style="color:var(--blue);">Facebook</a></div>
+              <div class="contact-row"><i class="fab fa-github"></i> <a href="https://github.com/Rj12-dev" style="color:var(--blue);">github.com/Rj12-dev</a></div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Right: Text content -->
+        <div class="about-content">
+          <h3>Professional Summary</h3>
+          <p>
+            I'm an IT professional driven by a deep passion for the physical layer of technology.
+            From hands-on hardware diagnostics to the architectural design of robust local area networks,
+            I bridge the gap between infrastructure and software to deliver reliable, scalable IT solutions.
+          </p>
+          <p>
+            As a <strong style="color:var(--white);">WorldSkills ASEAN 2025 Competitor</strong> in Information Network Cabling,
+            I have demonstrated technical excellence and precision at the regional level — competing against
+            the best young IT professionals across Southeast Asia.
+          </p>
+
+          <h3>Education</h3>
+          <div class="timeline">
+            <div class="timeline-item fade-up">
+              <div class="timeline-line"><div class="timeline-dot"></div><div class="timeline-connector"></div></div>
+              <div class="timeline-body">
+                <div class="tl-date">2022 – 2025</div>
+                <div class="tl-title">Bachelor of Science in Information Technology</div>
+                <div class="tl-org">Technical / Vocational Institute · Philippines</div>
+                <div class="tl-desc">Focused on computer networking, hardware servicing, and IT infrastructure management.</div>
+              </div>
+            </div>
+            <div class="timeline-item fade-up">
+              <div class="timeline-line"><div class="timeline-dot"></div><div class="timeline-connector"></div></div>
+              <div class="timeline-body">
+                <div class="tl-date">2020 – 2022</div>
+                <div class="tl-title">ICT Strand — Senior High School</div>
+                <div class="tl-org">Senior High School · Philippines</div>
+                <div class="tl-desc">Specialized in computer hardware servicing and basic networking fundamentals.</div>
+              </div>
+            </div>
+            <div class="timeline-item fade-up">
+              <div class="timeline-line"><div class="timeline-dot" style="background:var(--green);"></div></div>
+              <div class="timeline-body">
+                <div class="tl-date" style="color:var(--green);">2025</div>
+                <div class="tl-title">WorldSkills ASEAN 2025 — INC Competitor</div>
+                <div class="tl-org">WorldSkills ASEAN Regional Competition</div>
+                <div class="tl-desc">Competed in Information Network Cabling, representing the Philippines at the ASEAN regional level.</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== SKILLS ===== -->
+  <section id="skills">
+    <div class="container">
+      <span class="label">Technical Expertise</span>
+      <h2 class="section-title">Skills &amp; Tools</h2>
+      <div class="section-divider"></div>
+
+      <div class="skills-layout">
+        <!-- Left column -->
+        <div>
+          <div class="skills-group">
+            <div class="skills-group-title">Infrastructure &amp; Networking</div>
+            <div class="skill-bar-item fade-up">
+              <div class="skill-bar-header">
+                <span class="skill-bar-name"><i class="fas fa-network-wired"></i> Network Cabling (Cat5e/6/6A)</span>
+                <span class="skill-bar-pct">92%</span>
+              </div>
+              <div class="skill-track"><div class="skill-fill" style="--pct:92%"></div></div>
+            </div>
+            <div class="skill-bar-item fade-up">
+              <div class="skill-bar-header">
+                <span class="skill-bar-name"><i class="fas fa-sitemap"></i> LAN / WLAN Design</span>
+                <span class="skill-bar-pct">85%</span>
+              </div>
+              <div class="skill-track"><div class="skill-fill" style="--pct:85%"></div></div>
+            </div>
+            <div class="skill-bar-item fade-up">
+              <div class="skill-bar-header">
+                <span class="skill-bar-name"><i class="fas fa-server"></i> Network Administration</span>
+                <span class="skill-bar-pct">80%</span>
+              </div>
+              <div class="skill-track"><div class="skill-fill" style="--pct:80%"></div></div>
+            </div>
+            <div class="skill-bar-item fade-up">
+              <div class="skill-bar-header">
+                <span class="skill-bar-name"><i class="fas fa-microchip"></i> Hardware Diagnostics</span>
+                <span class="skill-bar-pct">88%</span>
+              </div>
+              <div class="skill-track"><div class="skill-fill" style="--pct:88%"></div></div>
+            </div>
+            <div class="skill-bar-item fade-up">
+              <div class="skill-bar-header">
+                <span class="skill-bar-name"><i class="fas fa-headset"></i> IT Support / Helpdesk</span>
+                <span class="skill-bar-pct">85%</span>
+              </div>
+              <div class="skill-track"><div class="skill-fill" style="--pct:85%"></div></div>
+            </div>
+          </div>
+
+          <div class="skills-group">
+            <div class="skills-group-title">Web Development</div>
+            <div class="skill-bar-item fade-up">
+              <div class="skill-bar-header">
+                <span class="skill-bar-name"><i class="fab fa-html5"></i> HTML5 &amp; CSS3</span>
+                <span class="skill-bar-pct">82%</span>
+              </div>
+              <div class="skill-track"><div class="skill-fill" style="--pct:82%"></div></div>
+            </div>
+            <div class="skill-bar-item fade-up">
+              <div class="skill-bar-header">
+                <span class="skill-bar-name"><i class="fab fa-js"></i> JavaScript</span>
+                <span class="skill-bar-pct">70%</span>
+              </div>
+              <div class="skill-track"><div class="skill-fill" style="--pct:70%"></div></div>
+            </div>
+            <div class="skill-bar-item fade-up">
+              <div class="skill-bar-header">
+                <span class="skill-bar-name"><i class="fab fa-git-alt"></i> Git &amp; Version Control</span>
+                <span class="skill-bar-pct">75%</span>
+              </div>
+              <div class="skill-track"><div class="skill-fill" style="--pct:75%"></div></div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Right column -->
+        <div>
+          <div class="skills-group">
+            <div class="skills-group-title">Tools &amp; Software</div>
+            <div class="tool-chips">
+              <span class="chip"><i class="fas fa-network-wired"></i> Cisco Packet Tracer</span>
+              <span class="chip"><i class="fab fa-windows"></i> Windows Server</span>
+              <span class="chip"><i class="fas fa-terminal"></i> CLI / PowerShell</span>
+              <span class="chip"><i class="fab fa-git-alt"></i> Git / GitHub</span>
+              <span class="chip"><i class="fas fa-code"></i> VS Code</span>
+              <span class="chip"><i class="fas fa-file-excel"></i> MS Office Suite</span>
+              <span class="chip"><i class="fas fa-camera"></i> Documentation</span>
+            </div>
+          </div>
+
+          <div class="skills-group" style="margin-top:36px;">
+            <div class="skills-group-title">Professional Competencies</div>
+            <div class="tool-chips">
+              <span class="chip" style="border-color:rgba(0,229,160,0.2);color:var(--green);background:rgba(0,229,160,0.08);">
+                <i class="fas fa-trophy"></i> Competition-Level Precision
+              </span>
+              <span class="chip" style="border-color:rgba(0,229,160,0.2);color:var(--green);background:rgba(0,229,160,0.08);">
+                <i class="fas fa-clock"></i> Deadline-Driven Execution
+              </span>
+              <span class="chip" style="border-color:rgba(0,229,160,0.2);color:var(--green);background:rgba(0,229,160,0.08);">
+                <i class="fas fa-users"></i> Team Collaboration
+              </span>
+              <span class="chip" style="border-color:rgba(0,229,160,0.2);color:var(--green);background:rgba(0,229,160,0.08);">
+                <i class="fas fa-book"></i> Fast Learner
+              </span>
+              <span class="chip" style="border-color:rgba(0,229,160,0.2);color:var(--green);background:rgba(0,229,160,0.08);">
+                <i class="fas fa-search"></i> Analytical Thinking
+              </span>
+              <span class="chip" style="border-color:rgba(0,229,160,0.2);color:var(--green);background:rgba(0,229,160,0.08);">
+                <i class="fas fa-comments"></i> Technical Communication
+              </span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== ACHIEVEMENTS ===== -->
+  <section id="achievements">
+    <div class="container">
+      <span class="label">Recognition &amp; Awards</span>
+      <h2 class="section-title">Achievements</h2>
+      <div class="section-divider"></div>
+
+      <div class="achievements-grid">
+        <div class="achievement-card featured fade-up">
+          <div class="ach-icon">🏆</div>
+          <div class="ach-year">2025 · ASEAN REGIONAL</div>
+          <div class="ach-title">WorldSkills ASEAN 2025<br>Information Network Cabling</div>
+          <p class="ach-desc">
+            Competed at the ASEAN regional level in Information Network Cabling —
+            one of the most rigorous and prestigious vocational competitions in Southeast Asia,
+            testing precision cabling, termination, and network infrastructure skills under timed competition conditions.
+          </p>
+          <div style="margin-top:16px;">
+            <span class="badge badge-green"><i class="fas fa-globe-asia"></i> ASEAN Competitor</span>
+          </div>
+        </div>
+
+        <div class="achievement-card fade-up">
+          <div class="ach-icon">🥇</div>
+          <div class="ach-year">2024 · NATIONAL / REGIONAL</div>
+          <div class="ach-title">National Skills Competition<br>Qualifier — INC</div>
+          <p class="ach-desc">
+            Qualified for and competed in the national-level skills competition in Information Network Cabling,
+            demonstrating top-tier technical expertise that earned a spot at the ASEAN regionals.
+          </p>
+          <div style="margin-top:16px;">
+            <span class="badge badge-blue"><i class="fas fa-medal"></i> National Qualifier</span>
+          </div>
+        </div>
+
+        <div class="achievement-card fade-up">
+          <div class="ach-icon">⭐</div>
+          <div class="ach-year">2023 – PRESENT</div>
+          <div class="ach-title">Academic Excellence<br>ICT / IT Program</div>
+          <p class="ach-desc">
+            Consistently recognized for academic performance in networking, hardware servicing,
+            and systems administration throughout the ICT and IT degree programs.
+          </p>
+          <div style="margin-top:16px;">
+            <span class="badge badge-orange"><i class="fas fa-star"></i> Academic Achiever</span>
+          </div>
+        </div>
+
+        <div class="achievement-card fade-up">
+          <div class="ach-icon">💻</div>
+          <div class="ach-year">2024</div>
+          <div class="ach-title">Ticketing System<br>Capstone Project</div>
+          <p class="ach-desc">
+            Developed a fully functional web-based ticketing system for small tech companies —
+            combining front-end development with practical IT support workflows.
+          </p>
+          <div style="margin-top:16px;">
+            <a href="https://github.com/Rj12-dev/Ticket-system.git" style="text-decoration:none;">
+              <span class="badge badge-blue"><i class="fab fa-github"></i> View on GitHub</span>
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== CERTIFICATIONS ===== -->
+  <section id="certifications">
+    <div class="container">
+      <span class="label">Credentials</span>
+      <h2 class="section-title">Certifications</h2>
+      <div class="section-divider"></div>
+
+      <div class="certs-grid">
+        <div class="cert-card fade-up">
+          <div class="cert-icon"><i class="fas fa-network-wired"></i></div>
+          <div>
+            <div class="cert-name">TESDA NC II — Computer Hardware Servicing</div>
+            <div class="cert-issuer">Technical Education and Skills Development Authority</div>
+            <div class="cert-year font-mono">TESDA · Philippines</div>
+          </div>
+        </div>
+        <div class="cert-card fade-up">
+          <div class="cert-icon"><i class="fas fa-award"></i></div>
+          <div>
+            <div class="cert-name">WorldSkills ASEAN 2025 — Certificate of Participation</div>
+            <div class="cert-issuer">WorldSkills International / ASEAN</div>
+            <div class="cert-year font-mono">2025 · Regional Level</div>
+          </div>
+        </div>
+        <div class="cert-card cert-pending fade-up">
+          <div class="cert-icon"><i class="fas fa-layer-group"></i></div>
+          <div>
+            <div class="cert-name">Cisco CCNA — In Progress</div>
+            <div class="cert-issuer">Cisco Networking Academy</div>
+            <div class="cert-year font-mono">Target: 2025–2026</div>
+          </div>
+        </div>
+        <div class="cert-card fade-up">
+          <div class="cert-icon"><i class="fab fa-html5"></i></div>
+          <div>
+            <div class="cert-name">Web Development Fundamentals</div>
+            <div class="cert-issuer">Self-Directed / Online Coursework</div>
+            <div class="cert-year font-mono">HTML · CSS · JavaScript</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== PROJECTS ===== -->
+  <section id="projects" style="background:var(--navy);">
+    <div class="container">
+      <span class="label">Portfolio</span>
+      <h2 class="section-title">Featured Projects</h2>
+      <div class="section-divider"></div>
+
+      <div class="projects-grid">
+        <div class="project-card fade-up">
+          <div class="project-head" style="background:linear-gradient(135deg,#0d1829,#162440);">
+            <i class="fa-solid fa-ticket" style="color:var(--blue);"></i>
+          </div>
+          <div class="project-body">
+            <div class="project-tags">
+              <span class="project-tag">HTML</span>
+              <span class="project-tag">CSS</span>
+              <span class="project-tag">JavaScript</span>
+              <span class="project-tag">IT Support</span>
+            </div>
+            <div class="project-name">IT Ticketing System</div>
+            <p class="project-desc">
+              A responsive, functional ticketing system designed for small tech companies.
+              Streamlines IT support workflows with ticket creation, assignment, and status tracking.
+            </p>
+            <div class="project-links">
+              <a href="https://github.com/Rj12-dev/Ticket-system.git" target="_blank">
+                <i class="fab fa-github"></i> Source Code
+              </a>
+            </div>
+          </div>
+        </div>
+
+        <div class="project-card fade-up">
+          <div class="project-head" style="background:linear-gradient(135deg,#0a1a10,#0d2b1a);">
+            <i class="fas fa-network-wired" style="color:var(--green);"></i>
+          </div>
+          <div class="project-body">
+            <div class="project-tags">
+              <span class="project-tag">Networking</span>
+              <span class="project-tag">Cabling</span>
+              <span class="project-tag">Infrastructure</span>
+            </div>
+            <div class="project-name">WorldSkills ASEAN 2025 — INC</div>
+            <p class="project-desc">
+              Competed at the ASEAN regional level in Information Network Cabling. Designed,
+              installed, and tested structured cabling systems meeting international standards
+              under competitive time constraints.
+            </p>
+            <div class="project-links">
+              <a href="gallery.html"><i class="fas fa-images"></i> View Gallery</a>
+            </div>
+          </div>
+        </div>
+
+        <div class="project-card fade-up">
+          <div class="project-head" style="background:linear-gradient(135deg,#1a1209,#2b1e0f);">
+            <i class="fas fa-globe" style="color:var(--orange);"></i>
+          </div>
+          <div class="project-body">
+            <div class="project-tags">
+              <span class="project-tag">HTML</span>
+              <span class="project-tag">CSS</span>
+              <span class="project-tag">JavaScript</span>
+              <span class="project-tag">Portfolio</span>
+            </div>
+            <div class="project-name">Personal IT Portfolio</div>
+            <p class="project-desc">
+              This very website — a fully responsive IT portfolio built from scratch. Features
+              dark theme UI, smooth animations, achievement showcase, and mobile-first design.
+            </p>
+            <div class="project-links">
+              <a href="#"><i class="fas fa-external-link-alt"></i> Live Site</a>
+              <a href="#"><i class="fab fa-github"></i> Code</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== VIDEOS ===== -->
+  <section id="videos" style="background:var(--navy-2);">
+    <div class="container">
+      <span class="label">In Action</span>
+      <h2 class="section-title">Video Highlights</h2>
+      <div class="section-divider"></div>
+
+      <div class="video-grid" id="videoGrid">
+
+        <!-- ── LOCAL MP4 CARD ──
+             Replace data-src with your actual file path, e.g. "assets/videos/competition.mp4"
+             Replace the thumbnail <img> src with a real poster/screenshot
+        ── -->
+       <a href="https://vimeo.com/reviews/ffa2f196-2511-4c82-b1f6-c9dc14d7afaa/users/257336197/folders/29388401" 
+   target="_blank" 
+   rel="noopener noreferrer"
+   class="video-card fade-up"
+   data-type="vimeo"
+   data-title="WorldSkills ASEAN 2025 — Competition Highlights"
+   style="display: block; text-decoration: none; color: inherit;">
+  <div class="video-thumb">
+    <img src="assets/images/540525053_1237370681758410_4196493112357231083_n.jpg" alt="WorldSkills ASEAN 2025 Information Network Cabling competition highlights">
+    <div class="play-btn"><i class="fab fa-vimeo-v"></i></div>
+    <div class="video-badge video-badge--vimeo"><i class="fab fa-vimeo-v"></i> Vimeo</div>
+    <div class="video-duration">2:34</div>
+  </div>
+  <div class="video-info">
+    <div class="video-cat">Competition</div>
+    <div class="video-title">WorldSkills ASEAN 2025 — Competition Highlights</div>
+    <div class="video-desc">Full walkthrough of the Information Network Cabling event at the ASEAN regional competition.</div>
+  </div>
+</a>
+
+        <!-- ── YOUTUBE CARD ──
+             Replace data-src with the YouTube VIDEO ID (the part after ?v=)
+             e.g. https://www.youtube.com/watch?v=ABC123  →  data-src="ABC123"
+             The thumbnail auto-loads from YouTube.
+        ── -->
+       <a href="https://vimeo.com/reviews/ffa2f196-2511-4c82-b1f6-c9dc14d7afaa/users/257336197/folders/29388401" 
+   target="_blank" 
+   rel="noopener noreferrer"
+   class="video-card fade-up" 
+   data-type="vimeo"
+   style="display: block; text-decoration: none; color: inherit;">
+  <div class="video-thumb">
+    <img src="assets/images/thumbnail.jpg" alt="Network Cabling Skills Demo - Cat6 structured cabling and termination">
+    <div class="play-btn"><i class="fab fa-vimeo-v"></i></div>
+    <div class="video-badge video-badge--vimeo"><i class="fab fa-vimeo-v"></i> Vimeo</div>
+  </div>
+  <div class="video-info">
+    <div class="video-cat">Skills Demo</div>
+    <div class="video-title">Network Cabling — Skills Demo</div>
+    <div class="video-desc">Demonstrating Cat6 structured cabling, termination, and cable management techniques.</div>
+  </div>
+</a>
+
+        <!-- ── FACEBOOK VIDEO CARD ──
+             Replace data-src with the FULL Facebook video page URL
+             e.g. "https://www.facebook.com/yourpage/videos/123456789"
+        ── -->
+        <a href="https://vimeo.com/reviews/ffa2f196-2511-4c82-b1f6-c9dc14d7afaa/users/257336197/folders/29388401" 
+   target="_blank" 
+   rel="noopener noreferrer"
+   class="video-card fade-up"
+   data-type="vimeo"
+   data-title="Behind the Scenes — Prep & Training"
+   style="display: block; text-decoration: none; color: inherit;">
+  <div class="video-thumb">
+    <img src="assets/images/540835458_122271100340211475_7300306216862138418_n.jpg" alt="WorldSkills ASEAN 2025 preparation and training footage">
+    <div class="play-btn"><i class="fab fa-vimeo-v"></i></div>
+    <div class="video-badge video-badge--vimeo"><i class="fab fa-vimeo-v"></i> Vimeo</div>
+  </div>
+  <div class="video-info">
+    <div class="video-cat">Training</div>
+    <div class="video-title">Behind the Scenes — Prep &amp; Training</div>
+    <div class="video-desc">Training sessions and preparation leading up to the WorldSkills ASEAN 2025 competition.</div>
+  </div>
+</a>
+
+        <!-- ── LOCAL MP4 CARD #2 ──
+             Replace with your actual project demo video path
+        ── -->
+        <a href="https://vimeo.com/reviews/ffa2f196-2511-4c82-b1f6-c9dc14d7afaa/users/257336197/folders/29388401" 
+   target="_blank" 
+   rel="noopener noreferrer"
+   class="video-card fade-up"
+   data-type="vimeo"
+   data-title="IT Ticketing System — Live Demo"
+   style="display: block; text-decoration: none; color: inherit;">
+  <div class="video-thumb">
+    <img src="assets/images/Screenshot_7.png" alt="IT Ticketing System capstone project live walkthrough demo">
+    <div class="play-btn"><i class="fab fa-vimeo-v"></i></div>
+    <div class="video-badge video-badge--vimeo"><i class="fab fa-vimeo-v"></i> Vimeo</div>
+    <div class="video-duration">1:12</div>
+  </div>
+  <div class="video-info">
+    <div class="video-cat">Project Demo</div>
+    <div class="video-title">IT Ticketing System — Live Demo</div>
+    <div class="video-desc">A walkthrough of the capstone ticketing system — features, UI, and core functionality.</div>
+  </div>
+</a>
+
+      </div><!-- /video-grid -->
+    </div>
+  </section>
+
+  <!-- ===== VIDEO MODAL ===== -->
+  <div id="videoModal" class="vmodal" aria-hidden="true" role="dialog">
+    <div class="vmodal-backdrop" id="vmodalBackdrop"></div>
+    <div class="vmodal-box">
+      <div class="vmodal-header">
+        <span class="vmodal-title" id="vmodalTitle"></span>
+        <button class="vmodal-close" id="vmodalClose" aria-label="Close video"><i class="fas fa-times"></i></button>
+      </div>
+      <div class="vmodal-player" id="vmodalPlayer"></div>
+    </div>
+  </div>
+
+  <!-- ===== CONTACT ===== -->
+  <section id="contact">
+    <div class="container">
+      <span class="label">Get In Touch</span>
+      <h2 class="section-title">Let's Work Together</h2>
+      <div class="section-divider"></div>
+
+      <div class="contact-layout">
+        <div class="contact-info-block">
+          <p style="color:var(--text-dim);font-size:0.95rem;margin-bottom:8px;line-height:1.8;">
+            I'm currently open to full-time IT roles, network infrastructure projects,
+            and freelance opportunities. Whether you need a network engineer, IT technician,
+            or a skilled developer — let's connect.
+          </p>
+          <div class="contact-info-item fade-up">
+            <div class="ci-icon"><i class="fas fa-map-marker-alt"></i></div>
+            <div>
+              <div class="ci-label">Location</div>
+              <div class="ci-value">Philippines 🇵🇭</div>
+              <div class="ci-sub">Available for remote &amp; on-site</div>
+            </div>
+          </div>
+          <div class="contact-info-item fade-up">
+            <div class="ci-icon"><i class="fab fa-facebook"></i></div>
+            <div>
+              <div class="ci-label">Facebook</div>
+              <div class="ci-value"><a href="https://www.facebook.com/shnratensie" style="color:var(--blue);">facebook.com/shnratensie</a></div>
+              <div class="ci-sub">Quickest way to reach me</div>
+            </div>
+          </div>
+          <div class="contact-info-item fade-up">
+            <div class="ci-icon"><i class="fab fa-github"></i></div>
+            <div>
+              <div class="ci-label">GitHub</div>
+              <div class="ci-value"><a href="https://github.com/Rj12-dev" style="color:var(--blue);">github.com/Rj12-dev</a></div>
+              <div class="ci-sub">Open source &amp; project work</div>
+            </div>
+          </div>
+          <div class="contact-info-item fade-up">
+            <div class="ci-icon"><i class="fas fa-briefcase"></i></div>
+            <div>
+              <div class="ci-label">Availability</div>
+              <div class="ci-value" style="color:var(--green);">Open to Opportunities</div>
+              <div class="ci-sub">Full-time · Freelance · Contract</div>
+            </div>
+          </div>
+        </div>
+<div class="contact-form-wrap fade-up">
+  <form action="https://formspree.io/f/mqejwoyl" method="POST">
+    
+    <div class="form-row">
+      <div class="form-group">
+        <label for="fname">First Name</label>
+        <input type="text" id="fname" name="first_name" placeholder="John" required>
+      </div>
+      <div class="form-group">
+        <label for="lname">Last Name</label>
+        <input type="text" id="lname" name="last_name" placeholder="Doe" required>
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label for="email">Email Address</label>
+      <input type="email" id="email" name="email" placeholder="john@company.com" required>
+    </div>
+
+    <div class="form-group">
+      <label for="subject">Subject</label>
+      <select id="subject" name="subject" required>
+        <option value="">Select a reason...</option>
+        <option value="Job Opportunity">Job Opportunity</option>
+        <option value="Freelance Project">Freelance Project</option>
+        <option value="Network Infrastructure">Network Infrastructure</option>
+        <option value="IT Support & Consulting">IT Support &amp; Consulting</option>
+        <option value="Collaboration">Collaboration</option>
+        <option value="Other">Other</option>
+      </select>
+    </div>
+
+    <div class="form-group">
+      <label for="message">Message</label>
+      <textarea id="message" name="message" placeholder="Tell me about the opportunity or project..." required></textarea>
+    </div>
+
+    <button type="submit" class="btn btn-primary" style="width:100%;justify-content:center;font-size:0.95rem;">
+      <i class="fas fa-paper-plane"></i> Send Message
+    </button>
+                                         <div class="ci-sub">Powered by: Formspree email support.</div>
+  </form>
+</div>
+  <!-- ===== FOOTER ===== -->
+  <footer>
+    <div class="container">
+      <div class="footer-inner">
+        <div class="footer-logo">&lt;RJ<span style="color:var(--text-dim);">/</span>&gt;</div>
+        <div class="footer-social">
+          <a href="https://github.com/Rj12-dev" title="GitHub"><i class="fab fa-github"></i></a>
+          <a href="https://www.facebook.com/shnratensie" title="Facebook"><i class="fab fa-facebook-f"></i></a>
+          <a href="#" title="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+        </div>
+      </div>
+      <div class="footer-copy">
+        © 2025 Roy Jhun Padecio · IT Professional &amp; WorldSkills ASEAN 2025 Competitor
+        &nbsp;·&nbsp; Built with <i class="fas fa-heart" style="color:var(--blue);"></i> and a lot of Cat6 cable.
+      </div>
+    </div>
+  </footer>
+
+  <!-- ===== MUSIC PLAYER ===== -->
+  <div id="music-player">
+    <!-- Expanded panel -->
+    <div id="music-panel">
+      <div class="mp-header">
+        <span class="mp-label"><i class="fas fa-music"></i> &nbsp;Now Playing</span>
+        <button class="mp-close-btn" id="mpCollapseBtn" title="Minimize"><i class="fas fa-chevron-down"></i></button>
+      </div>
+      <div class="mp-track">
+        <div class="mp-vinyl" id="mpVinylLarge"></div>
+        <div class="mp-info">
+          <div class="mp-title" id="mpTitle">Lofi Study Beats</div>
+          <div class="mp-artist" id="mpArtist">Ambient · Background</div>
+        </div>
+      </div>
+      <div class="mp-progress-wrap">
+        <div class="mp-progress-bar" id="mpProgressBar">
+          <div class="mp-progress-fill" id="mpProgressFill"></div>
+        </div>
+        <div class="mp-times">
+          <span id="mpCurrent">0:00</span>
+          <span id="mpDuration">--:--</span>
+        </div>
+      </div>
+      <div class="mp-controls">
+        <button class="mp-btn" id="mpMuteBtn" title="Mute"><i class="fas fa-volume-up"></i></button>
+        <button class="mp-btn play-pause" id="mpPlayBtn" title="Play / Pause"><i class="fas fa-play"></i></button>
+        <button class="mp-btn" id="mpLoopBtn" title="Loop"><i class="fas fa-redo"></i></button>
+      </div>
+      <div class="mp-volume-row">
+        <i class="fas fa-volume-down mp-vol-icon"></i>
+        <input type="range" class="mp-volume-slider" id="mpVolume" min="0" max="1" step="0.01" value="0.4">
+        <i class="fas fa-volume-up mp-vol-icon"></i>
+      </div>
+    </div>
+    <!-- Collapsed pill -->
+    <div id="music-pill" title="Open music player">
+      <div class="music-icon" id="mpPillVinyl"></div>
+      <div class="music-pill-info">
+        <div class="music-pill-title">Lofi Study Beats</div>
+        <div class="music-pill-sub">Click to expand</div>
+      </div>
+      <div class="music-wave" id="mpWave">
+        <span></span><span></span><span></span><span></span><span></span>
+      </div>
+    </div>
+  </div>
+
+  <!-- ===== TETRIS FLOAT BUTTON ===== -->
+  <!-- Tetris nudge bubble -->
+  <div id="tetrisNudge" class="tg-nudge">
+    <button class="tg-nudge-close" id="tetrisNudgeClose" title="Dismiss">✕</button>
+    <div class="tg-nudge-emoji">🎮</div>
+    <div class="tg-nudge-text">
+      <strong>Hey, bored?</strong>
+      <span>There's a Tetris game hiding here — give it a shot!</span>
+    </div>
+    <button class="tg-nudge-cta" id="tetrisNudgeCta">Play now ▶</button>
+    <div class="tg-nudge-arrow"></div>
+  </div>
+
+  <button id="tetrisBtn" title="Play Tetris" aria-label="Open Tetris">
+    <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" width="22" height="22">
+      <rect x="2"  y="2"  width="9" height="9" rx="2" fill="currentColor" opacity="0.9"/>
+      <rect x="13" y="2"  width="9" height="9" rx="2" fill="currentColor" opacity="0.6"/>
+      <rect x="2"  y="13" width="9" height="9" rx="2" fill="currentColor" opacity="0.6"/>
+      <rect x="13" y="13" width="9" height="9" rx="2" fill="currentColor" opacity="0.3"/>
+    </svg>
+  </button>
+
+  <!-- ===== TETRIS MODAL ===== -->
+  <div id="tetrisModal" class="tg-overlay" aria-modal="true" role="dialog" aria-label="Tetris Game">
+    <div class="tg-backdrop" id="tetrisBackdrop"></div>
+    <div class="tg-modal">
+      <div class="tg-header">
+        <div class="tg-title font-mono">&lt;TETRIS<span>/</span>&gt;</div>
+        <div class="tg-meta">
+          <div class="tg-score-box">
+            <span class="tg-score-label">SCORE</span>
+            <span class="tg-score-val" id="tgScore">0</span>
+          </div>
+          <div class="tg-score-box">
+            <span class="tg-score-label">LEVEL</span>
+            <span class="tg-score-val" id="tgLevel">1</span>
+          </div>
+          <div class="tg-score-box">
+            <span class="tg-score-label">LINES</span>
+            <span class="tg-score-val" id="tgLines">0</span>
+          </div>
+        </div>
+        <button class="tg-close" id="tetrisClose" title="Close">✕</button>
+      </div>
+      <div class="tg-body">
+        <div class="tg-left">
+          <canvas id="tetrisCanvas" width="200" height="400"></canvas>
+          <div id="tgOverlay" class="tg-game-overlay">
+            <div class="tg-overlay-content">
+              <div class="tg-overlay-title" id="tgOverlayTitle">TETRIS</div>
+              <div class="tg-overlay-sub" id="tgOverlaySub">Press Start to play</div>
+              <button class="tg-start-btn" id="tgStartBtn">▶ START</button>
+            </div>
+          </div>
+        </div>
+        <div class="tg-right">
+          <div class="tg-panel">
+            <div class="tg-panel-label font-mono">NEXT</div>
+            <canvas id="tgNextCanvas" width="80" height="80"></canvas>
+          </div>
+          <div class="tg-panel tg-controls">
+            <div class="tg-panel-label font-mono">CONTROLS</div>
+            <div class="tg-key-row"><kbd>←→</kbd><span>Move</span></div>
+            <div class="tg-key-row"><kbd>↑</kbd><span>Rotate</span></div>
+            <div class="tg-key-row"><kbd>↓</kbd><span>Soft drop</span></div>
+            <div class="tg-key-row"><kbd>Space</kbd><span>Hard drop</span></div>
+            <div class="tg-key-row"><kbd>P</kbd><span>Pause</span></div>
+          </div>
+          <div class="tg-panel tg-mobile-btns">
+            <div class="tg-panel-label font-mono">TOUCH</div>
+            <div class="tg-dpad">
+              <button class="tg-dpad-btn" id="tgUp">↑</button>
+              <div class="tg-dpad-row">
+                <button class="tg-dpad-btn" id="tgLeft">←</button>
+                <button class="tg-dpad-btn tg-dpad-down" id="tgDown">↓</button>
+                <button class="tg-dpad-btn" id="tgRight">→</button>
+              </div>
+              <button class="tg-dpad-btn tg-dpad-space" id="tgSpace">DROP</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- ===== END TETRIS ===== -->
+
+  <!-- Audio element — swap src for your own track -->
+  <audio id="bgMusic" loop preload="none">
+    <source src="assets/audio/Udienxx - Struct (Instrumental  Slowed to perfection).mp3" type="audio/mpeg">
+  </audio>
+
+  <!-- ===== SCRIPTS ===== -->
+  <script>
+    // ── WELCOME GATE ──────────────────────────────────────────────────
+    (function() {
+      const overlay  = document.getElementById('welcomeOverlay');
+      const steps    = document.querySelectorAll('.wg-panel');
+      const dots     = document.querySelectorAll('.wg-step');
+      let currentStep = 0;
+
+      // Lock scroll on load
+      document.body.classList.add('wg-locked');
+
+      function showStep(n) {
+        steps.forEach((p, i) => p.classList.toggle('active', i === n));
+        dots.forEach((d, i) => {
+          d.classList.toggle('active', i === n);
+          d.classList.toggle('done', i < n);
+        });
+        currentStep = n;
+      }
+
+      window.wgNext = function() {
+        if (currentStep < steps.length - 1) showStep(currentStep + 1);
+      };
+
+      window.wgBack = function() {
+        if (currentStep > 0) showStep(currentStep - 1);
+      };
+
+      window.wgSelect = function(btn, groupId) {
+        const group = document.getElementById(groupId);
+        group.querySelectorAll('.wg-choice').forEach(b => b.classList.remove('selected'));
+        btn.classList.add('selected');
+        // Enable the next/enter button for this step
+        const nextBtn = group.closest('.wg-panel').querySelector('.wg-btn--primary');
+        if (nextBtn) nextBtn.disabled = false;
+      };
+
+      window.wgEnter = function() {
+        const musicChoice   = document.querySelector('#wgChoices2 .wg-choice.selected');
+        const purposeChoice = document.querySelector('#wgChoices1 .wg-choice.selected');
+        const wantsMusic    = musicChoice && musicChoice.dataset.value === 'yes';
+
+        // ── Silent Formspree ping ─────────────────────────────────────
+        const purposeLabel = purposeChoice
+          ? purposeChoice.querySelector('span').textContent.trim()
+          : 'Unknown';
+
+        const payload = {
+          _subject:     '\ud83d\udc4b New visitor on your portfolio!',
+          purpose:      purposeLabel,
+          music_choice: wantsMusic ? 'Yes \u2014 autoplay on' : 'No \u2014 muted',
+          visited_at:   new Date().toLocaleString('en-PH', { timeZone: 'Asia/Manila' }),
+          page_url:     window.location.href,
+          _replyto:     'no-reply@visitor.log'
+        };
+
+        fetch('https://formspree.io/f/mqejwoyl', {
+          method:  'POST',
+          headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
+          body:    JSON.stringify(payload)
+        }).catch(() => {}); // silent — never blocks the user
+        // ─────────────────────────────────────────────────────────────
+
+        // Animate out
+        overlay.classList.add('hidden');
+        document.body.classList.remove('wg-locked');
+
+        // Handle music
+        if (wantsMusic) {
+          const audio = document.getElementById('bgMusic');
+          if (audio) {
+            audio.play().then(() => {
+              // Mirror the play state into the existing music player UI
+              const mpPlayBtn   = document.getElementById('mpPlayBtn');
+              const mpVinyl     = document.getElementById('mpVinylLarge');
+              const mpPillVinyl = document.getElementById('mpPillVinyl');
+              const mpWave      = document.getElementById('mpWave');
+              if (mpPlayBtn)   mpPlayBtn.innerHTML = '<i class="fas fa-pause"></i>';
+              if (mpVinyl)     mpVinyl.classList.add('spinning');
+              if (mpPillVinyl) mpPillVinyl.classList.add('spinning');
+              if (mpWave)      mpWave.classList.remove('paused');
+            }).catch(() => {});
+          }
+        }
+
+        // Remove from DOM after transition
+        setTimeout(() => overlay.remove(), 600);
+      };
+    })();
+    // ─────────────────────────────────────────────────────────────────
+
+    // ── THEME TOGGLE ────────────────────────────────────────────────
+    (function() {
+      var btn   = document.getElementById('themeToggle');
+      var icon  = btn.querySelector('.tt-icon');
+      var label = btn.querySelector('.tt-label');
+      var DAY   = 'day-mode';
+      var saved = localStorage.getItem('rj_theme');
+
+      function applyTheme(day) {
+        if (day) {
+          document.body.classList.add(DAY);
+          icon.textContent  = '☀️';
+          label.textContent = 'Day';
+        } else {
+          document.body.classList.remove(DAY);
+          icon.textContent  = '🌙';
+          label.textContent = 'Night';
+        }
+      }
+
+      if (saved === 'day') applyTheme(true);
+
+      btn.addEventListener('click', function() {
+        var isDay = document.body.classList.contains(DAY);
+        applyTheme(!isDay);
+        localStorage.setItem('rj_theme', isDay ? 'night' : 'day');
+      });
+    })();
+    // ─────────────────────────────────────────────────────────────────
+
+    // Mobile nav toggle
+    const hamburger = document.getElementById('hamburger');
+    const navLinks = document.getElementById('navLinks');
+    hamburger.addEventListener('click', () => {
+      navLinks.classList.toggle('active');
+    });
+
+    // Scroll animations
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+          // Animate skill bars when they come into view
+          entry.target.querySelectorAll('.skill-fill').forEach(bar => {
+            bar.classList.add('animate');
+          });
+        }
+      });
+    }, { threshold: 0.1, rootMargin: '0px 0px -60px 0px' });
+
+    document.querySelectorAll('.fade-up').forEach(el => observer.observe(el));
+
+    // Animate skill bars on scroll
+    const skillObserver = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.querySelectorAll('.skill-fill').forEach(bar => {
+            bar.classList.add('animate');
+          });
+        }
+      });
+    }, { threshold: 0.3 });
+
+    document.querySelectorAll('#skills').forEach(el => skillObserver.observe(el));
+
+    // Active nav highlighting on scroll
+    const sections = document.querySelectorAll('section[id], header[id]');
+    const navAnchors = document.querySelectorAll('.nav-links a[href^="#"]');
+    const scrollSpy = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          const id = entry.target.id;
+          navAnchors.forEach(a => {
+            a.classList.toggle('active', a.getAttribute('href') === '#' + id);
+          });
+        }
+      });
+    }, { rootMargin: '-20% 0px -70% 0px' });
+    sections.forEach(s => scrollSpy.observe(s));
+
+    // Close mobile nav on outside click
+    document.addEventListener('click', (e) => {
+      if (!navLinks.contains(e.target) && !hamburger.contains(e.target)) {
+        navLinks.classList.remove('active');
+      }
+    });
+
+    // Smooth close nav on link click
+    navLinks.querySelectorAll('a').forEach(link => {
+      link.addEventListener('click', () => {
+        navLinks.classList.remove('active');
+      });
+    });
+
+    // ── VIDEO MODAL ──────────────────────────────────────────────────
+    const vModal       = document.getElementById('videoModal');
+    const vPlayer      = document.getElementById('vmodalPlayer');
+    const vTitle       = document.getElementById('vmodalTitle');
+    const vClose       = document.getElementById('vmodalClose');
+    const vBackdrop    = document.getElementById('vmodalBackdrop');
+
+    function openVideo(card) {
+      const src   = card.dataset.src;
+      const type  = card.dataset.type;   // 'mp4' | 'youtube' | 'facebook'
+      const title = card.dataset.title || '';
+
+      vTitle.textContent = title;
+      vPlayer.innerHTML  = '';           // clear previous
+
+      if (type === 'mp4') {
+        // ── Native HTML5 video ──────────────────────────────────────
+        const vid = document.createElement('video');
+        vid.src      = src;
+        vid.controls = true;
+        vid.autoplay = true;
+        vid.style.cssText = 'width:100%;border-radius:0 0 12px 12px;display:block;background:#000;max-height:70vh;';
+        vPlayer.appendChild(vid);
+
+      } else if (type === 'youtube') {
+        // ── YouTube iframe ──────────────────────────────────────────
+        // src should be the video ID only, e.g. "dQw4w9WgXcQ"
+        const iframe = document.createElement('iframe');
+        iframe.src = `https://www.youtube.com/embed/${src}?autoplay=1&rel=0&modestbranding=1`;
+        iframe.allow = 'autoplay; encrypted-media; fullscreen; picture-in-picture';
+        iframe.allowFullscreen = true;
+        iframe.style.cssText = 'width:100%;aspect-ratio:16/9;border:none;display:block;border-radius:0 0 12px 12px;';
+        vPlayer.appendChild(iframe);
+
+      } else if (type === 'facebook') {
+        // ── Facebook embedded video player ──────────────────────────
+        // src should be the full Facebook video URL
+        const encodedUrl = encodeURIComponent(src);
+        const iframe = document.createElement('iframe');
+        iframe.src = `https://www.facebook.com/plugins/video.php?href=${encodedUrl}&show_text=false&autoplay=true&width=800`;
+        iframe.allow = 'autoplay; encrypted-media; picture-in-picture';
+        iframe.allowFullscreen = true;
+        iframe.scrolling = 'no';
+        iframe.style.cssText = 'width:100%;aspect-ratio:16/9;border:none;display:block;border-radius:0 0 12px 12px;';
+        vPlayer.appendChild(iframe);
+      }
+
+      vModal.classList.add('active');
+      vModal.setAttribute('aria-hidden', 'false');
+      document.body.style.overflow = 'hidden';
+    }
+
+    function closeVideo() {
+      vModal.classList.remove('active');
+      vModal.setAttribute('aria-hidden', 'true');
+      vPlayer.innerHTML = '';   // kills autoplay/audio
+      document.body.style.overflow = '';
+    }
+
+    // Attach click to every video card
+    document.querySelectorAll('.video-card').forEach(card => {
+      card.addEventListener('click', () => openVideo(card));
+    });
+
+    vClose.addEventListener('click', closeVideo);
+    vBackdrop.addEventListener('click', closeVideo);
+    document.addEventListener('keydown', e => {
+      if (e.key === 'Escape' && vModal.classList.contains('active')) closeVideo();
+    });
+    // ─────────────────────────────────────────────────────────────────
+
+    // ── MUSIC PLAYER ─────────────────────────────────────────────────
+    const audio        = document.getElementById('bgMusic');
+    const mpPlayBtn    = document.getElementById('mpPlayBtn');
+    const mpMuteBtn    = document.getElementById('mpMuteBtn');
+    const mpLoopBtn    = document.getElementById('mpLoopBtn');
+    const mpVolume     = document.getElementById('mpVolume');
+    const mpProgressFill = document.getElementById('mpProgressFill');
+    const mpProgressBar  = document.getElementById('mpProgressBar');
+    const mpCurrent    = document.getElementById('mpCurrent');
+    const mpDuration   = document.getElementById('mpDuration');
+    const mpVinylLarge = document.getElementById('mpVinylLarge');
+    const mpPillVinyl  = document.getElementById('mpPillVinyl');
+    const mpWave       = document.getElementById('mpWave');
+    const mpPanel      = document.getElementById('music-panel');
+    const mpPill       = document.getElementById('music-pill');
+    const mpCollapseBtn= document.getElementById('mpCollapseBtn');
+
+    let isPlaying = false;
+    let isMuted   = false;
+    let isLooping = audio.loop; // true by default
+
+    audio.volume = parseFloat(mpVolume.value);
+
+    function fmt(s) {
+      if (isNaN(s)) return '--:--';
+      const m = Math.floor(s / 60), sec = Math.floor(s % 60);
+      return m + ':' + String(sec).padStart(2,'0');
+    }
+
+    function setPlayState(playing) {
+      isPlaying = playing;
+      mpPlayBtn.innerHTML = `<i class="fas fa-${playing ? 'pause' : 'play'}"></i>`;
+      if (playing) {
+        mpVinylLarge.classList.add('spinning');
+        mpPillVinyl.classList.add('spinning');
+        mpWave.classList.remove('paused');
+      } else {
+        mpVinylLarge.classList.remove('spinning');
+        mpPillVinyl.classList.remove('spinning');
+        mpWave.classList.add('paused');
+      }
+    }
+
+    mpPlayBtn.addEventListener('click', () => {
+      if (isPlaying) { audio.pause(); setPlayState(false); }
+      else { audio.play().then(() => setPlayState(true)).catch(() => {}); }
+    });
+
+    // Pill click = toggle panel; if paused first click also plays
+    mpPill.addEventListener('click', () => {
+      mpPanel.classList.add('open');
+      mpPill.style.display = 'none';
+      if (!isPlaying) {
+        audio.play().then(() => setPlayState(true)).catch(() => {});
+      }
+    });
+
+    mpCollapseBtn.addEventListener('click', () => {
+      mpPanel.classList.remove('open');
+      mpPill.style.display = 'flex';
+    });
+
+    mpMuteBtn.addEventListener('click', () => {
+      isMuted = !isMuted;
+      audio.muted = isMuted;
+      mpMuteBtn.innerHTML = `<i class="fas fa-volume-${isMuted ? 'mute' : 'up'}"></i>`;
+      mpMuteBtn.style.color = isMuted ? 'var(--orange)' : '';
+    });
+
+    mpLoopBtn.addEventListener('click', () => {
+      isLooping = !isLooping;
+      audio.loop = isLooping;
+      mpLoopBtn.style.color = isLooping ? 'var(--blue)' : '';
+      mpLoopBtn.style.borderColor = isLooping ? 'rgba(0,194,255,0.3)' : '';
+    });
+    // Highlight loop button (on by default)
+    mpLoopBtn.style.color = 'var(--blue)';
+    mpLoopBtn.style.borderColor = 'rgba(0,194,255,0.3)';
+
+    mpVolume.addEventListener('input', () => {
+      audio.volume = parseFloat(mpVolume.value);
+      if (audio.volume === 0) { audio.muted = true; isMuted = true; mpMuteBtn.innerHTML = '<i class="fas fa-volume-mute"></i>'; }
+      else if (isMuted) { audio.muted = false; isMuted = false; mpMuteBtn.innerHTML = '<i class="fas fa-volume-up"></i>'; mpMuteBtn.style.color = ''; }
+    });
+
+    audio.addEventListener('timeupdate', () => {
+      if (!audio.duration) return;
+      const pct = (audio.currentTime / audio.duration) * 100;
+      mpProgressFill.style.width = pct + '%';
+      mpCurrent.textContent = fmt(audio.currentTime);
+    });
+
+    audio.addEventListener('loadedmetadata', () => {
+      mpDuration.textContent = fmt(audio.duration);
+    });
+
+    audio.addEventListener('ended', () => {
+      if (!audio.loop) setPlayState(false);
+    });
+
+    mpProgressBar.addEventListener('click', e => {
+      if (!audio.duration) return;
+      const rect = mpProgressBar.getBoundingClientRect();
+      audio.currentTime = ((e.clientX - rect.left) / rect.width) * audio.duration;
+    });
+    // ─────────────────────────────────────────────────────────────────
+
+    // ── TETRIS ───────────────────────────────────────────────────────
+    (function() {
+      const modal     = document.getElementById('tetrisModal');
+      const backdrop  = document.getElementById('tetrisBackdrop');
+      const openBtn   = document.getElementById('tetrisBtn');
+      const closeBtn  = document.getElementById('tetrisClose');
+      const canvas    = document.getElementById('tetrisCanvas');
+      const nextCvs   = document.getElementById('tgNextCanvas');
+      const ctx       = canvas.getContext('2d');
+      const nctx      = nextCvs.getContext('2d');
+      const overlay   = document.getElementById('tgOverlay');
+      const startBtn  = document.getElementById('tgStartBtn');
+      const oTitle    = document.getElementById('tgOverlayTitle');
+      const oSub      = document.getElementById('tgOverlaySub');
+      const elScore   = document.getElementById('tgScore');
+      const elLevel   = document.getElementById('tgLevel');
+      const elLines   = document.getElementById('tgLines');
+
+      const COLS = 10, ROWS = 20, BLOCK = 20;
+      const COLORS = ['','#00c2ff','#00e5a0','#ff7c3b','#f7c948','#b07eff','#ff4f7b','#4fc3f7'];
+      const PIECES = [
+        null,
+        [[1,1,1,1]],
+        [[2,2],[2,2]],
+        [[0,3,0],[3,3,3]],
+        [[4,0],[4,0],[4,4]],
+        [[0,5],[0,5],[5,5]],
+        [[6,6,0],[0,6,6]],
+        [[0,7,7],[7,7,0]]
+      ];
+
+      let board, piece, pieceX, pieceY, nextPiece;
+      let score=0, level=1, lines=0, speed=600;
+      let running=false, paused=false, raf, lastTime=0, dropCounter=0;
+
+      function newBoard() { return Array.from({length:ROWS}, ()=>Array(COLS).fill(0)); }
+      function randPiece() {
+        const id = Math.floor(Math.random()*7)+1;
+        return { id, shape: PIECES[id].map(r=>[...r]) };
+      }
+
+      function drawBlock(r, c, color, context, size) {
+        context = context || ctx; size = size || BLOCK;
+        context.fillStyle = color;
+        context.fillRect(c*size+1, r*size+1, size-2, size-2);
+        context.fillStyle = 'rgba(255,255,255,0.15)';
+        context.fillRect(c*size+1, r*size+1, size-2, 3);
+        context.fillStyle = 'rgba(0,0,0,0.2)';
+        context.fillRect(c*size+1, r*size+size-4, size-2, 3);
+      }
+
+      function drawBoard() {
+        ctx.clearRect(0,0,canvas.width,canvas.height);
+        ctx.strokeStyle = 'rgba(0,194,255,0.05)';
+        ctx.lineWidth = 1;
+        for(let r=0;r<ROWS;r++) for(let c=0;c<COLS;c++) ctx.strokeRect(c*BLOCK, r*BLOCK, BLOCK, BLOCK);
+        for(let r=0;r<ROWS;r++) for(let c=0;c<COLS;c++) {
+          if(board[r][c]) drawBlock(r, c, COLORS[board[r][c]]);
+        }
+      }
+
+      function drawPiece(ghost) {
+        if(!piece) return;
+        var gy = pieceY;
+        if(ghost) { while(!collides(piece.shape, pieceX, gy+1)) gy++; }
+        piece.shape.forEach(function(row,r) { row.forEach(function(v,c) {
+          if(v) {
+            if(ghost && gy!==pieceY) {
+              ctx.fillStyle='rgba(0,194,255,0.15)';
+              ctx.fillRect((pieceX+c)*BLOCK+1,(gy+r)*BLOCK+1,BLOCK-2,BLOCK-2);
+            } else {
+              drawBlock(pieceY+r, pieceX+c, COLORS[v]);
+            }
+          }
+        }); });
+      }
+
+      function drawNext() {
+        nctx.clearRect(0,0,nextCvs.width,nextCvs.height);
+        if(!nextPiece) return;
+        var s=nextPiece.shape, bk=16;
+        var ox=Math.floor((nextCvs.width/bk - s[0].length)/2);
+        var oy=Math.floor((nextCvs.height/bk - s.length)/2);
+        s.forEach(function(row,r) { row.forEach(function(v,c) {
+          if(v) { nctx.fillStyle=COLORS[v]; nctx.fillRect((ox+c)*bk+1,(oy+r)*bk+1,bk-2,bk-2); }
+        }); });
+      }
+
+      function collides(shape, px, py) {
+        for(var r=0;r<shape.length;r++) for(var c=0;c<shape[r].length;c++) {
+          if(!shape[r][c]) continue;
+          var nr=py+r, nc=px+c;
+          if(nr>=ROWS || nc<0 || nc>=COLS) return true;
+          if(nr>=0 && board[nr][nc]) return true;
+        }
+        return false;
+      }
+
+      function lock() {
+        piece.shape.forEach(function(row,r) { row.forEach(function(v,c) {
+          if(v && pieceY+r>=0) board[pieceY+r][pieceX+c]=v;
+        }); });
+        clearLines();
+        piece = nextPiece; nextPiece = randPiece();
+        pieceX = Math.floor((COLS - piece.shape[0].length)/2); pieceY = 0;
+        drawNext();
+        if(collides(piece.shape, pieceX, pieceY)) gameOver();
+      }
+
+      function clearLines() {
+        var cleared=0;
+        for(var r=ROWS-1;r>=0;r--) {
+          if(board[r].every(function(v){return v;})) {
+            board.splice(r,1); board.unshift(Array(COLS).fill(0)); cleared++; r++;
+          }
+        }
+        if(!cleared) return;
+        lines+=cleared;
+        score += [0,100,300,500,800][cleared] * level;
+        level = Math.floor(lines/10)+1;
+        speed = Math.max(100, 600-(level-1)*50);
+        elScore.textContent=score; elLevel.textContent=level; elLines.textContent=lines;
+      }
+
+      function rotate(shape) { return shape[0].map(function(_,i){ return shape.map(function(r){ return r[i]; }).reverse(); }); }
+      function moveLeft()  { if(!collides(piece.shape,pieceX-1,pieceY)) pieceX--; }
+      function moveRight() { if(!collides(piece.shape,pieceX+1,pieceY)) pieceX++; }
+      function softDrop()  { if(!collides(piece.shape,pieceX,pieceY+1)) pieceY++; else lock(); }
+      function hardDrop()  { while(!collides(piece.shape,pieceX,pieceY+1)) pieceY++; lock(); }
+      function rotatePiece() {
+        var r=rotate(piece.shape);
+        if(!collides(r,pieceX,pieceY)) piece.shape=r;
+        else if(!collides(r,pieceX-1,pieceY)) { piece.shape=r; pieceX--; }
+        else if(!collides(r,pieceX+1,pieceY)) { piece.shape=r; pieceX++; }
+      }
+
+      function gameLoop(ts) {
+        ts = ts || 0;
+        if(!running||paused) return;
+        dropCounter += ts - lastTime; lastTime = ts;
+        if(dropCounter > speed) { softDrop(); dropCounter=0; }
+        drawBoard(); drawPiece(true); drawPiece(false);
+        raf = requestAnimationFrame(gameLoop);
+      }
+
+      function startGame() {
+        board=newBoard(); score=0; level=1; lines=0; speed=600;
+        elScore.textContent=0; elLevel.textContent=1; elLines.textContent=0;
+        nextPiece=randPiece(); piece=randPiece();
+        pieceX=Math.floor((COLS-piece.shape[0].length)/2); pieceY=0;
+        drawNext(); overlay.style.display='none';
+        running=true; paused=false; lastTime=0; dropCounter=0;
+        cancelAnimationFrame(raf);
+        raf=requestAnimationFrame(gameLoop);
+      }
+
+      function gameOver() {
+        running=false; cancelAnimationFrame(raf);
+        oTitle.textContent='GAME OVER'; oSub.textContent='Score: '+score;
+        startBtn.textContent='\u21ba RETRY'; overlay.style.display='flex';
+      }
+
+      function pauseGame() {
+        if(!running) return;
+        paused=!paused;
+        if(!paused) { lastTime=0; dropCounter=0; raf=requestAnimationFrame(gameLoop); }
+      }
+
+      document.addEventListener('keydown', function(e) {
+        if(!modal.classList.contains('active')) return;
+        if(e.key==='ArrowLeft')  { e.preventDefault(); if(running&&!paused) moveLeft(); }
+        if(e.key==='ArrowRight') { e.preventDefault(); if(running&&!paused) moveRight(); }
+        if(e.key==='ArrowDown')  { e.preventDefault(); if(running&&!paused) softDrop(); }
+        if(e.key==='ArrowUp')    { e.preventDefault(); if(running&&!paused) rotatePiece(); }
+        if(e.key===' ')          { e.preventDefault(); if(running&&!paused) hardDrop(); }
+        if(e.key==='p'||e.key==='P') pauseGame();
+      });
+
+      document.getElementById('tgLeft') .addEventListener('click',function(){ if(running&&!paused) moveLeft(); });
+      document.getElementById('tgRight').addEventListener('click',function(){ if(running&&!paused) moveRight(); });
+      document.getElementById('tgDown') .addEventListener('click',function(){ if(running&&!paused) softDrop(); });
+      document.getElementById('tgUp')   .addEventListener('click',function(){ if(running&&!paused) rotatePiece(); });
+      document.getElementById('tgSpace').addEventListener('click',function(){ if(running&&!paused) hardDrop(); });
+
+      openBtn.addEventListener('click', function(){
+        modal.classList.add('active');
+        document.body.style.overflow='hidden';
+      });
+
+      function closeModal() {
+        modal.classList.remove('active');
+        document.body.style.overflow='';
+        running=false; cancelAnimationFrame(raf);
+        oTitle.textContent='TETRIS'; oSub.textContent='Press Start to play';
+        startBtn.textContent='\u25b6 START'; overlay.style.display='flex';
+      }
+
+      closeBtn.addEventListener('click', closeModal);
+      backdrop.addEventListener('click', closeModal);
+      document.addEventListener('keydown', function(e){ if(e.key==='Escape'&&modal.classList.contains('active')) closeModal(); });
+      startBtn.addEventListener('click', startGame);
+
+      ctx.strokeStyle='rgba(0,194,255,0.05)';
+      for(var r=0;r<ROWS;r++) for(var c=0;c<COLS;c++) ctx.strokeRect(c*BLOCK,r*BLOCK,BLOCK,BLOCK);
+
+      // ── Nudge bubble ──────────────────────────────────────────────
+      var nudge     = document.getElementById('tetrisNudge');
+      var nudgeClose= document.getElementById('tetrisNudgeClose');
+      var nudgeCta  = document.getElementById('tetrisNudgeCta');
+      var nudgeSeen = sessionStorage.getItem('tg_nudge_seen');
+
+      if(!nudgeSeen) {
+        // Show after 6s, only if welcome gate is already gone
+        setTimeout(function() {
+          if(!document.getElementById('welcomeOverlay')) {
+            nudge.classList.add('visible');
+            // Auto-hide after 8s
+            setTimeout(function(){ nudge.classList.remove('visible'); }, 8000);
+          }
+        }, 6000);
+      }
+
+      function dismissNudge() {
+        nudge.classList.remove('visible');
+        sessionStorage.setItem('tg_nudge_seen','1');
+      }
+
+      nudgeClose.addEventListener('click', function(e){ e.stopPropagation(); dismissNudge(); });
+      nudgeCta.addEventListener('click', function() {
+        dismissNudge();
+        modal.classList.add('active');
+        document.body.style.overflow='hidden';
+      });
+      // ─────────────────────────────────────────────────────────────
+    })();
+    // ─────────────────────────────────────────────────────────────────
+  </script>
+</body>
+</html>
